@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('Welcome to Fashion Fitness Life1');
+    return view('Welcome');
 });
