@@ -16,11 +16,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">Atul Kumar Club</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#">Fitness</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
@@ -38,7 +38,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../navbar/">Default</a></li>
-                <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
+                <li><a href="./">Static top <span class="sr-only">(current)</span></a></li>
                 <li><a href="../navbar-fixed-top/">Fixed top</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -50,36 +50,36 @@
 
     <!-- Main component for a primary marketing message or call to action -->
     <div class="row">
-        {{--<div class="col-md-2">
-            @yield('ad-placeholder')
-        </div>--}}
         <div class="col-md-9">
             <div class="jumbotron" id="jumbotron">
-                <h1>Navbar example</h1>
-
-                <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
-                    It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-
-                <p>To see the difference between static and fixed top navbars, just scroll.</p>
-
-                <p>
-                    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar
-                        docs &raquo;</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-3" id="adplaceholderonside">
-            <div class="row">
-                <div class="col-md-12">
-            @yield('ad-placeholder')
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Navbar example</h4>
+                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
+                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+                        </div>
+                    <div class="col-md-2">
+                        <h4>Google Ad</h4>
+                        <p>This is a google ad template.</p>
                     </div>
+                    <div class="col-md-5">
+                        <h4>Navbar example</h4>
+                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
+                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+                    </div>
+                    </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Navbar example</h4>
+                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
+                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+                    </div>
+
                 </div>
-            <div class="row">
-                <div class="col-md-12">
-                    @yield('ad-placeholder')
-                </div>
+
             </div>
         </div>
+        @include('_adplaceholder')
     </div>
 
 </div> <!-- /container -->
