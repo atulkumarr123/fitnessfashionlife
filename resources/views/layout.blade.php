@@ -5,92 +5,39 @@
     <title>Fitness Fashion Life</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/custom.css">
+    {{--<link rel="stylesheet" href="css/contact-buttons.css">--}}
+    {{--<link rel="stylesheet" href="css/demo.css">--}}
+    {{--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">--}}
+
 </head>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Atul Kumar Club</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Fitness</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
-                <li><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
 
-
+@include('_navbar')
+{{--<div id="for-social-media-sidebar" style="display:inline-block">atul--}}
+{{--</div>--}}
 <div class="container">
-
-    <!-- Main component for a primary marketing message or call to action -->
     <div class="row">
-        <div class="col-md-9">
-            <div class="jumbotron" id="jumbotron">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h4>Navbar example</h4>
-                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
-                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-                        </div>
-                    <div class="col-md-2">
-                        <h4>Google Ad</h4>
-                        <p>This is a google ad template.</p>
-                    </div>
-                    <div class="col-md-5">
-                        <h4>Navbar example</h4>
-                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
-                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-                    </div>
-                    </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>Navbar example</h4>
-                        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
-                            It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+        @yield('recentUpdates')
         @include('_adplaceholder')
     </div>
-
-</div> <!-- /container -->
-
-
-
-
+    <div id="copyright text-right">© Copyright 2013 Scotchy Scotch Scotch</div>
+</div>
+{{--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-569637614e7281f1" async="async"></script>--}}
+{{--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-569637614e7281f1" async="async"></script>--}}
 <script type="text/javascript"
         src="js/jquery.min.js"></script>
 <script type="text/javascript"
         src="js/bootstrap.min.js"></script>
+{{--<script src="js/jquery.contact-buttons.js"></script>--}}
+{{--<script src="js/demo.js"></script>--}}
+{{--<script>--}}
+    {{--$("#recent-update").click(function() {--}}
+        {{--window.location = $(this).find("a").attr("href");--}}
+        {{--return false;--}}
+    {{--});--}}
+{{--</script>--}}
 
 </body>
 </html>
