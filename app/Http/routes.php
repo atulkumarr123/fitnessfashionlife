@@ -12,4 +12,5 @@
 */
 
 Route::get('about', 'PagesController@about');
-Route::get('/','PagesController@home');
+//Route::get('/','PagesController@home');
+Route::get('/','ArticleController@index');
