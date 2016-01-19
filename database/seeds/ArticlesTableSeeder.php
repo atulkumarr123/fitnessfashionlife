@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Article;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -11,6 +12,15 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Article',20)->create();
+        $faker = Faker\Factory::create();
+        foreach (range(1, 10) as $index) {
+            Article::create([
+                'title' => $faker->title,
+                'body' => $faker->paragraph,
+                'description' =>  $faker->sentence,
+                'published_at' => $faker->date(),
+            ]);
+        }
+
     }
 }

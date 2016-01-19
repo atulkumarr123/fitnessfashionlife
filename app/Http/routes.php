@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('about', 'PagesController@about');
+Route::get('about/', 'PagesController@about');
 //Route::get('/','PagesController@home');
 Route::get('/','ArticleController@index');
+Route::get('article/{id}','ArticleController@getArticle');
+Route::get('create','ArticleController@create');

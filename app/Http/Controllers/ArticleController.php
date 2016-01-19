@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ArticleDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,6 +23,14 @@ class ArticleController extends Controller
         return view('home')->with('articles',$articles);
     }
 
+    public function getArticle($id)
+    {
+       $article =  ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
+        return view('article')->with('article',$article);
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +38,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('newArticle');
     }
 
     /**

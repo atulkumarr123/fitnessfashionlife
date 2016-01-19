@@ -11,11 +11,12 @@ class PagesController extends Controller
 {
     public function about()
     {
-        return "about page";
+        return view('article');
     }
 
     public function home()
-    {
+    { Log::info("First line");
+        Log::info("Logging one variable: " . this.atul);
         return view('home');
     }
 }

@@ -1,4 +1,4 @@
-<div class="col-md-9" id="recentUpdates">
+<div class="col-md-9" id="main-content-holder">
     <div class="row">
         <div class="col-md-12" id="google-ad-1">
             <h4>Google Ad</h4>
@@ -9,11 +9,11 @@
         <div class="row">
             @foreach ($chunk as $article)
                 <div class="col-md-6 article-design-on-home-page">
-                    <a href="http://google.com" class="recent-updates-block-anchor">
+                    <a href="{{url("/article",$article->id)}}" class="recent-updates-block-anchor">
                         <article class="media">
                             <img class="media-object" src="images/6K7SIB380W (1).jpg">
-                            <h4 class="article-title-calss">{{$article->description}}</h4>
-                            <p class="article-description-calss">
+                            <h4 class="article-title-class">{{$article->description}}</h4>
+                            <p class="article-body-class">
                                 {{substr($article->body,0,75)}}{{'...'}}
                             </p>
                         </article>

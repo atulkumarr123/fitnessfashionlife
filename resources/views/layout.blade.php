@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>Fitness Fashion Life</title>
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
 @include('_navbar')
 <div class="container">
     <div class="row">
+        @yield('createArticleForm')
+        @yield('article')
         @yield('recentUpdates')
         @include('_adplaceholder')
     </div>
