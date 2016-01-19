@@ -12,9 +12,3 @@ var config = {};
 // config.skin = 'jquery-mobile';
 
 CKFinder.define( config );
-
-function CheckAuthentication()
-{
- alert("true");
- return true;
-}
