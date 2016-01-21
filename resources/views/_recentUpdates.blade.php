@@ -9,9 +9,9 @@
         <div class="row">
             @foreach ($chunk as $article)
                 <div class="col-md-6 article-design-on-home-page">
-                    <a href="{{url("/article",$article->id)}}" class="recent-updates-block-anchor">
+                    <a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">
                         <article class="media">
-                            <img class="media-object" src="images/6K7SIB380W (1).jpg">
+                            <img class="media-object" src="images/{{$article->articleDetails->get(0)->img_name}}">
                             <h4 class="article-title-class">{{$article->description}}</h4>
                             <p class="article-body-class">
                                 {{substr($article->body,0,75)}}{{'...'}}

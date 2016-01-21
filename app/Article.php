@@ -9,7 +9,7 @@ class  Article extends Model
     protected $fillable = ['title', 'body', 'published_at'];
 
     public function articleDetails(){
-        return $this->hasMany('App\ArticleDetails');
+        return $this->hasMany('App\ArticleDetail');
     }
 
 }

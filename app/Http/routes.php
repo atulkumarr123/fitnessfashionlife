@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('about/', 'PagesController@about');
+//Route::get('about/', 'PagesController@about');
 //Route::get('/','PagesController@home');
-Route::get('/','ArticleController@index');
-Route::get('article/{id}','ArticleController@getArticle');
-Route::get('create','ArticleController@create');
+//Route::get('articles','ArticlesController@index');
+//Route::get('articles/{id}','ArticlesController@getArticle');
+//Route::get('articles/create','ArticlesController@create');
+//Route::post('articles','ArticlesController@store');
+
+Route:resource('articles', 'ArticlesController');

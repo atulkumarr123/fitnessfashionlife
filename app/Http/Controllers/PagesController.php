@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Log;
 class PagesController extends Controller
 {
     public function about()
@@ -16,7 +17,8 @@ class PagesController extends Controller
 
     public function home()
     { Log::info("First line");
-        Log::info("Logging one variable: " . this.atul);
-        return view('home');
+        $articles = Article::all();
+//        dd($articles);
+        return view('home')->with('articles', $articles);
     }
 }

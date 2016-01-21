@@ -1,8 +1,7 @@
 @extends('layout')
-<script type="text/javascript"
-        src="ckeditor/ckeditor.js"></script>
-<script type="text/javascript"
-        src="ckfinder/ckfinder.js"></script>
+
+
+
 @section('createArticleForm')
     <div class="col-md-9" id="main-content-holder">
         <div class="row">
@@ -13,25 +12,39 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form enctype="multipart/form-data" action="/articles" method="post">
+                    {{csrf_field()}}
+                    <input type="hidden" name="numberOfTextAreas" id="numberOfTextAreas" value="1" class="form-control">
                     <div class="form-group">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title" class="form-control" value="">
+                        <input type="text" name="title" id="title" class="form-control" value="" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text" name="description" id="description" class="form-control" value="">
+                        <input type="text" name="description" id="description" class="form-control" value="" required>
                     </div>
-                    <label for="articleBody">Article:</label>
-                    <div class="form-group" id="articleBody" contenteditable="true">
-                        <script>
+                    <div class="form-group" id="editor">
+                        <label for="articleBody1">
+                            Write your Article:</label>
+                        <textarea id="articleBody1" name="articleBody1" class="form-control" required>
+
+                        </textarea>
+                        <script type="text/javascript">
                             CKEDITOR.disableAutoInline = true;
-//                            CKEDITOR.replace('articleBody');
-                            CKEDITOR.inline( 'articleBody', {
+                            CKEDITOR.inline('articleBody1', {
                                 filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
                                 filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
-                            } );
+                            });
                         </script>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary pull-right"> Save</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary pull-right" onclick="newEditor()">Create new
+                            editor
+                        </button>
                     </div>
                 </form>
             </div>
@@ -40,8 +53,48 @@
 
 @stop
 
+@section('addDivScript')
+    <script type="text/javascript">
 
+        CKEDITOR.on('instanceCreated', function (evt) {
+            console.log('instanceCreated', evt, evt.editor);
+        });
 
+        function newEditor() {
+            var count = $('textarea').length+1;
+//            alert(count);
+            $('#numberOfTextAreas').val(count);
+//            alert(DOMDocument.getElementsByTagName('textarea').length);
+            var textarea = CKEDITOR.dom.element.createFromHtml('<textarea id="articleBody'+count+'" name="articleBody'+count+'" class="form-control"></textarea>');
+            var outerDiv = new CKEDITOR.dom.element(document.getElementById('editor'));
+            textarea.appendTo(outerDiv);
+
+            // Create editor instance on the new element.
+            CKEDITOR.inline(textarea, {
+                        toolbarGroups: [
+                            {name: 'clipboard', groups: ['clipboard', 'undo']},
+                            {name: 'editing', groups: ['find', 'selection', 'spellchecker']},
+                            {name: 'links'},
+                            {name: 'insert'},
+                            {name: 'forms'},
+                            {name: 'tools'},
+                            {name: 'document', groups: ['mode', 'document', 'doctools']},
+                            {name: 'others'},
+                            '/',
+                            {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
+                            {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi']},
+                            {name: 'styles'},
+                            {name: 'colors'},
+
+                        ],
+                        filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                        filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+                    }
+            );
+            CKEDITOR.disableAutoInline = true;
+        }
+    </script>
+@stop
 
 
 

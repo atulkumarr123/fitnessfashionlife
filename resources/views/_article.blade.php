@@ -5,14 +5,14 @@
             This is a google ad template.</p>
         </div>
     </div>
-    @foreach ($article as $articleDetails)
+    @foreach ($article as $oneArticle)
         <div class="row">
             <div class="col-md-12 article-design-on-article-page">
                     <article class="media">
-                        <h4 class="article-details-title-class">{{$articleDetails->counter.'.  '.$articleDetails->heading}}</h4>
-                        <img class="media-object" src="/images/6K7SIB380W (1).jpg">
+                        <h4 class="article-details-title-class">{{$oneArticle->counter.'.  '.$oneArticle->heading}}</h4>
+                        <img class="media-object" src="/images/.{{$oneArticle->get(0)->img_name}}">
                         <p class="article-details-body-class">
-                            {{$articleDetails->body}}
+                            {{$oneArticle->body}}
                         </p>
                     </article>
             </div>
