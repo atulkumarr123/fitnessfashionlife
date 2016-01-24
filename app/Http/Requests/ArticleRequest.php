@@ -23,11 +23,12 @@ class ArticleRequest extends Request
      */
     public function rules()
     {
-        Log::info("First line in request");
+
         return [
 //          'description'=>'required',
 //            'image'=>'required',
 //          'articleBody1'=>'required'
         ];
+        Log::info("exiting from request");
     }
 }

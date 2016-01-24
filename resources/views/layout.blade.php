@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>Fitness Fashion Life</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/fromGulp/app.css">
     <link rel="stylesheet" href="/css/custom.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
     <script type="text/javascript"
             src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript"

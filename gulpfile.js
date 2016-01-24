@@ -24,8 +24,8 @@ var elixir = require('laravel-elixir');
 //});
 
 elixir(function (mix) {
-    mix.sass('app.scss')
-        //.sass('custom.scss')
+    mix.sass('app.scss','public/css/fromGulp')
+        .sass('carouselModeToListArticles.scss','public/css/fromGulp')
         .copy('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/jquery.min.js',
         'resources/assets/js/jquery.min.js')
         .copy('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/bootstrap.min.js',
