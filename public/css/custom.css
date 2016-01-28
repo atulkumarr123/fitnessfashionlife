@@ -107,7 +107,7 @@ and (max-width: 992px) {
     .media-object {
         display: block;
         width: 350px;
-        height: 200px;
+        height: 220px;
     }
 }
 
@@ -115,7 +115,7 @@ and (max-width: 992px) {
     .media-object {
         display: block;
         width: 405.75px;
-        height: 200px;
+        height: 220px;
     }
 }
 
@@ -125,7 +125,7 @@ and (max-width: 768px) {
     .media-object {
         display: block;
         width: 395px;
-        height: 150px;
+        height: 210px;
     }
 }
 
@@ -134,7 +134,7 @@ and (max-width: 328px) {
     .media-object {
         display: block;
         width: 285px;
-        height: 150px;
+        height: 190px;
     }
 }
 

@@ -12,7 +12,7 @@
 */
 
 Route::get('about/', 'PagesController@about');
-Route::get('/','PagesController@home');
+Route::get('/','ArticlesController@index');
 Route::get('articles','ArticlesController@index');
 Route::get('articles/create','ArticlesController@create');
 Route::get('articles/{id}/edit','ArticlesController@edit');
