@@ -100,7 +100,7 @@ public function get_string_between($string, $start, $end){
      */
     public function show($id)
     {
-//        Log::info("show($id)");
+        Log::info("show($id)");
         $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
         return view('carouselModeToListArticles')->with('articleDetails', $articleDetails);
 //        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();

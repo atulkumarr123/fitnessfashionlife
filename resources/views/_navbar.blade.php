@@ -16,7 +16,7 @@
                 <li><a href="#contact">Life</a></li>
                 <li><a href="#contact">Fun</a></li>
                 <li><a href="#contact">Crazy Facts</a></li>
-                <li><a href="#contact">Inspirational</a></li>
+                <li><a href="#contact">Media Stories</a></li>
                 {{--<li class="dropdown">--}}
                     {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
                         {{--Dropdown--}}
