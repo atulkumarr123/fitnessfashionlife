@@ -1,0 +1,46 @@
+$iphone5Width: 294px !important;
+$iphone5Height: 200px !important;
+@media only screen
+and (min-width: 320px)
+and (max-width: 374px) {
+  .cke_custom_textarea_inline img{
+    width: $iphone5Width;
+    height: $iphone5Height;
+  }
+}
+
+$iphone6Width: 349px !important;
+$iphone6Height: 220px !important;
+@media only screen
+and (min-width: 375px)
+and (max-width: 413px) {
+  .cke_custom_textarea_inline img{
+    width: $iphone6Width;
+    height: $iphone6Height;
+  }
+}
+
+
+$iphone6PlusWidth: 388px !important;
+$iphone6PlusHeight: 220px !important;
+@media only screen
+and (min-width: 414px)
+and (max-width: 499px) {
+  .cke_custom_textarea_inline img{
+    width: $iphone6PlusWidth;
+    height: $iphone6PlusHeight;
+  }
+}
+
+$biggerThanIphone6Width: 460px !important;
+$biggerThanIphone6Height: 460px !important;
+@media only screen
+and (min-width: 500px)
+and (max-width: 550px) {
+  .cke_custom_textarea_inline img{
+    width: $biggerThanIphone6Width;
+    height: $biggerThanIphone6Height;
+  }
+}
+
+
