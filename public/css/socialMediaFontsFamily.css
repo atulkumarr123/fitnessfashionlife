@@ -1,5 +1,6 @@
 
 .socialMediaContainer{
+    height: 50px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -36,6 +37,11 @@
     /*background-color: #295cc2;*/
     /*}*/
 
+
+.twitter-follow-button {
+    vertical-align: top;
+    float: right;
+}
 .twitter-share-button {
     vertical-align: top;
 }
