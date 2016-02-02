@@ -11,10 +11,12 @@
                 <div class="col-md-6 article-design-on-home-page">
                     <a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">
                         <article class="media">
+                            <h4 class="article-title-class">{{$article->title}}</h4>
+                            <h6 class="pull-right" style="margin:0px">{{$article->updated_at->toFormattedDateString()}}</h6>
                             <img class="media-object" src="images/{{$article->articleDetails->get(0)->img_name}}">
-                            <h4 class="article-title-class">{{$article->description}}</h4>
+{{--                            <h5 class="article-title-class">{{$article->description}}</h5>--}}
                             <p class="article-body-class">
-                                {{substr($article->body,0,75)}}{{'...'}}
+                            <h5> {{substr($article->description,0,75)}}{{'...'}}</h5>
                             </p>
                         </article>
                     </a>

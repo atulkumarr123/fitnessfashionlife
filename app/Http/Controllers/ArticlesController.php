@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Article;
+use App\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,7 @@ class ArticlesController extends Controller
     {
 //        $articles = Article::all()->orderBy('counter', 'asc');
         $articles = Article::orderBy('id','desc')->get();
-//        Log::info("Here we go ".$articles->get(0)->articleDetails->get(0)->img_name);
+//        Log::info("Here we go ".$articles);
 //        dd($articles);
         return view('home')->with('articles', $articles);
     }
@@ -38,7 +39,11 @@ class ArticlesController extends Controller
     public function create()
     {
 //        dd("create");
-        return view('newarticle');
+//        return view('newarticle');
+        $tags = Tag::lists('name','id');
+        $selectedTags = emptyArray();
+        return view('newarticle')->with(compact('tags','selectedTags'));
+//                                    ->with('selectedTags');
     }
 
     /**
@@ -51,10 +56,21 @@ class ArticlesController extends Controller
     {
         DB::beginTransaction();
         try {
-
-            $article = new Article(['title' => $request->get('title'),
+            $article = Article::create(['title' => $request->get('title'),
                 'description' => $request->get('description')]);
-            $article->save();
+
+            $tagsFromRequest = $request->input('tags');
+            Log::info("hereeee");
+            Log::info($tagsFromRequest);
+            for ($counter = 0; $counter < count($tagsFromRequest); $counter++) {
+                if (!Tag::lists('id')->contains($tagsFromRequest[$counter])) {
+                    $tag = Tag::create(['name' => $tagsFromRequest[$counter]]);
+                    $tag->save();
+                    $tagsFromRequest[$counter] = $tag->id;
+                }
+            }
+            $article->tags()->sync($tagsFromRequest);
+
             $numberOfTextAreas =  $request->get('numberOfTextAreas');
             $collectionOfDetails = new Collection();
 //            dd($numberOfTextAreas);
@@ -101,8 +117,11 @@ public function get_string_between($string, $start, $end){
     public function show($id)
     {
         Log::info("show($id)");
+        $article = Article::findorFail($id);
+        $tags = Tag::lists('name','id');
+        $selectedTags = $article->tags()->lists('name');
         $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
-        return view('carouselModeToListArticles')->with('articleDetails', $articleDetails);
+        return view('carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
 //        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
 //        return view('articleWithCkEdReadOnly')->with('articleDetails', $articleDetails);
 
@@ -117,10 +136,17 @@ public function get_string_between($string, $start, $end){
     public function edit($id)
     {
 //        Log::info("edit($id)");
+//        $tags = Tag::lists('name','id');
+//        return view('newarticle')->with(compact('tags'));
+        $article = Article::findorFail($id);
         $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
         $title = $articleDetails->get(0)->article->title;
+        $tags = Tag::lists('name','id');
+        $selectedTags = $article->tags()->lists('id')->toArray();
         $description = $articleDetails->get(0)->article->description;
-        return view('editArticle', compact('articleDetails', 'title','description'));
+        return view('editArticle')->
+            with(compact('articleDetails', 'title','description','selectedTags','tags'));
+//            ->with('selectedTags',$selectedTags->toArray());
     }
 
     /**
@@ -141,7 +167,18 @@ public function get_string_between($string, $start, $end){
             $article->title = $request->get('title');
             $article->description = $request->get('description');
 
-            $article->update();
+            $tagsFromRequest = $request->input('tags');
+            Log::info("hereeee");
+            Log::info($tagsFromRequest);
+            for ($counter = 0; $counter < count($tagsFromRequest); $counter++) {
+                if (!Tag::lists('id')->contains($tagsFromRequest[$counter])) {
+                    $tag = Tag::create(['name' => $tagsFromRequest[$counter]]);
+                    $tag->save();
+                    $tagsFromRequest[$counter] = $tag->id;
+                }
+            }
+            $article->tags()->sync($tagsFromRequest);
+//            $article->update();
 
             $numberOfTextAreas =  $request->get('numberOfTextAreas');
 //            Log::info("static 5...".$request->get('articleBody4'));

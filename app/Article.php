@@ -12,4 +12,9 @@ class  Article extends Model
         return $this->hasMany('App\ArticleDetail');
     }
 
+
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
+
 }

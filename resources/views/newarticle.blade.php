@@ -1,7 +1,5 @@
 @extends('layout')
 
-
-
 @section('createArticleForm')
     <div class="col-md-9" id="main-content-holder">
         <div class="row">
@@ -39,14 +37,7 @@
                     </div>
             </div>
         </div>
-            <div class="row">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary pull-right"> Save</button>
-                    <button type="button" class="btn btn-primary pull-right" onclick="newEditor()">Create new
-                        editor
-                    </button>
-                </div>
-                </div>
+            @include("_tagsAndButtonsContainer")
         </form>
     </div>
 

@@ -50,16 +50,7 @@
                     @endforeach
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12" id="buttonDiv">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary pull-right"> Save</button>
-                <button type="button" class="btn btn-primary pull-right" onclick="newEditor()">Create new
-                    editor
-                </button>
-            </div>
-        </div>
-            </div>
+        @include("_tagsAndButtonsContainer")
         {!! Form::close() !!}
     </div>
 
