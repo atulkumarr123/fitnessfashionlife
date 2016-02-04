@@ -1,3 +1,14 @@
+$smallPhonesWidth: 257px !important;
+$smallPhonesHeight: 200px !important;
+@media only screen
+and (min-width: 300px)
+and (max-width: 319px) {
+  .cke_custom_textarea_inline img{
+    width: $smallPhonesWidth;
+    height: $smallPhonesHeight;
+  }
+}
+
 $iphone5Width: 294px !important;
 $iphone5Height: 200px !important;
 @media only screen

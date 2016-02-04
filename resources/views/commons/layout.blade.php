@@ -22,21 +22,24 @@
         <script type="text/javascript"
         src="/select2-4.0.1/js/select2.min.js">
     </script>
-
-
+    <script type="text/javascript"
+            src="/js/customJs/socialIcons.js"></script>
+    <script type="text/javascript"
+        src="/js/customJs/createNewEditorScript.js">
+    </script>
 </head>
 <body>
 {{--@include('_sidebar')--}}
-@include('_navbar')
+@include('commons._navbar')
 <div class="container">
         <div class="row" id="mainRow">
         @yield('createArticleForm')
         @yield('article')
         @yield('recentUpdates')
-        @include('_adplaceholder')
+        @include('ads._adplaceholder')
         </div>
 </div>
-    @include('_footer')
+    @include('commons._footer')
 </body>
 @yield('addDivScript')
 </html>

@@ -28,7 +28,7 @@ class ArticlesController extends Controller
         $articles = Article::orderBy('id','desc')->get();
 //        Log::info("Here we go ".$articles);
 //        dd($articles);
-        return view('home')->with('articles', $articles);
+        return view('viewContent.home')->with('articles', $articles);
     }
 
     /**
@@ -42,7 +42,7 @@ class ArticlesController extends Controller
 //        return view('newarticle');
         $tags = Tag::lists('name','id');
         $selectedTags = emptyArray();
-        return view('newarticle')->with(compact('tags','selectedTags'));
+        return view('createContent.newarticle')->with(compact('tags','selectedTags'));
 //                                    ->with('selectedTags');
     }
 
@@ -121,7 +121,7 @@ public function get_string_between($string, $start, $end){
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('name');
         $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
-        return view('carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
+        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
 //        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
 //        return view('articleWithCkEdReadOnly')->with('articleDetails', $articleDetails);
 
@@ -144,7 +144,7 @@ public function get_string_between($string, $start, $end){
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('id')->toArray();
         $description = $articleDetails->get(0)->article->description;
-        return view('editArticle')->
+        return view('editUpdateContent.editArticle')->
             with(compact('articleDetails', 'title','description','selectedTags','tags'));
 //            ->with('selectedTags',$selectedTags->toArray());
     }
