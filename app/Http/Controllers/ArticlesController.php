@@ -144,7 +144,7 @@ public function get_string_between($string, $start, $end){
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('id')->toArray();
         $description = $articleDetails->get(0)->article->description;
-        return view('editUpdateContent.editArticle')->
+        return view('editContent.editArticle')->
             with(compact('articleDetails', 'title','description','selectedTags','tags'));
 //            ->with('selectedTags',$selectedTags->toArray());
     }
