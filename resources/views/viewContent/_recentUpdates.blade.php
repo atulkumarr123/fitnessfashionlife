@@ -1,14 +1,9 @@
-<div class="col-md-9" id="main-content-holder">
-    <div class="row">
-        <div class="col-md-12" id="google-ad-1">
-            <h4>Google Ad</h4>
-            This is a google ad template.</p>
-        </div>
-    </div>
-    @foreach ($articles->chunk(2) as $chunk)
+<div class="col-md-12" id="main-content-holder">
+    @include("ads._ad1")
+    @foreach ($articles->chunk(3) as $chunk)
         <div class="row">
             @foreach ($chunk as $article)
-                <div class="col-md-6 article-design-on-home-page">
+                <div class="col-md-4 article-design-on-home-page">
                     <a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">
                         <article class="media">
                             <h4 class="article-title-class">{{$article->title}}</h4>

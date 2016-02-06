@@ -14,6 +14,7 @@ use App\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Expr\Array_;
 
 class ArticlesController extends Controller
 {
@@ -54,10 +55,12 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+
         DB::beginTransaction();
         try {
             $article = Article::create(['title' => $request->get('title'),
-                'description' => $request->get('description')]);
+                'description' => $request->get('description'),
+                'img_name' => $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"')]);
 
             $tagsFromRequest = $request->input('tags');
             Log::info("hereeee");
@@ -89,7 +92,7 @@ class ArticlesController extends Controller
                 );
 
         }
-//            dd($counter);
+//            dd($article);
             $article->articleDetails()->saveMany($collectionOfDetails);
             DB::commit();
         } catch (\Exception $e) {
@@ -108,6 +111,43 @@ public function get_string_between($string, $start, $end){
         $len = strpos($string, $end, $ini) - $ini;
         return substr($string, $ini, $len);
     }
+
+//    public  function sampling($chars, $size, $combinations = array()) {
+//        # if it's the first iteration, the first set
+//        # of combinations is the same as the set of characters
+//        if (empty($combinations)) {
+//            $combinations = $chars;
+//        }
+//
+//        # we're done if we're at size 1
+//        if ($size == 1) {
+//            return $combinations;
+//        }
+//
+//        # initialise array to put new values in
+//        $new_combinations = array();
+//
+//        # loop through existing combinations and character set to create strings
+//        foreach ($combinations as $combination) {
+//            foreach ($chars as $char) {
+//                $new_combinations[] = $combination . $char;
+//            }
+//        }
+//
+//        # call same function again for the next iteration
+//        return $this->sampling($chars, $size - 1, $new_combinations);
+//
+//    }
+    function pc_array_power_set($array) {
+        // initialize by adding the empty set
+        $results = array(array( ));
+
+        foreach ($array as $element)
+            foreach ($results as $combination)
+                array_push($results, array_merge(array($element), $combination));
+
+        return $results;
+    }
     /**
      * Display the specified resource.
      *
@@ -116,15 +156,44 @@ public function get_string_between($string, $start, $end){
      */
     public function show($id)
     {
-        Log::info("show($id)");
         $article = Article::findorFail($id);
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('name');
-        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
-        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
-//        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
-//        return view('articleWithCkEdReadOnly')->with('articleDetails', $articleDetails);
+        $numberOfTagsInCurrentArticle = count($selectedTags);
+        DB::connection()->enableQueryLog();
+        $similarArticles = array();
+        if(!$selectedTags->isEmpty()) {
+//            $reducingArrayOfTags = $selectedTags;
+            $removedBrackets = substr($selectedTags, 1, -1);
+            $numberOfIds = count($selectedTags);
+            for ($counter = 0; $counter < $numberOfTagsInCurrentArticle ; $counter++) {
 
+                $similarArticlesSubSet = DB::select
+                (
+                    'select articles.* from
+            `articles`, tags,article_tag where
+            article_tag.article_id = articles.id and
+            article_tag.tag_id = tags.id and
+            tags.name Not In (select name from tags where name NOT IN (' . $removedBrackets . ')) and
+            articles.id<>' . $id . '
+            group by articles.id
+            HAVING count(articles.id)='.$numberOfIds.'');
+                $numberOfIds = $numberOfIds-1;
+                if(count($similarArticlesSubSet)>0){
+                    array_push($similarArticles,$similarArticlesSubSet);
+                }
+                $queries = DB::getQueryLog();
+            }
+            Log::info($queries);
+//            Log::info($similarArticles);
+        }
+else{
+    $similarArticles = emptyArray();
+}
+
+//        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
+//        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
+        return view('viewContent.article')->with(compact('article','selectedTags','similarArticles'));
     }
 
     /**
@@ -166,6 +235,8 @@ public function get_string_between($string, $start, $end){
             $article = Article::findorFail($id);
             $article->title = $request->get('title');
             $article->description = $request->get('description');
+            $article->body = $request->get('articleBody0');
+            $article->img_name = $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"');
 
             $tagsFromRequest = $request->input('tags');
             Log::info("hereeee");
@@ -178,7 +249,7 @@ public function get_string_between($string, $start, $end){
                 }
             }
             $article->tags()->sync($tagsFromRequest);
-//            $article->update();
+            $article->update();
 
             $numberOfTextAreas =  $request->get('numberOfTextAreas');
 //            Log::info("static 5...".$request->get('articleBody4'));

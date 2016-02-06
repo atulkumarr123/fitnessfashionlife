@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Atul Kumar Club</a>
+            <a class="navbar-brand fa fa-home fa-2x" href="/"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -34,9 +34,9 @@
             {{--</ul>--}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Talk to Me</a></li>
+                <li><a href="#">Talk to Us</a></li>
                 {{--<li><a href="#">Static top <span class="sr-only">(current)</span></a></li>--}}
-                <li><a href="#">About Me</a></li>
+                <li><a href="#">About Us</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

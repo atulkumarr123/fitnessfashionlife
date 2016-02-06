@@ -1,4 +1,10 @@
-
+.navbar-brand {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+/*.fa-home:before {*/
+/*content: "\f015";*/
+/*}*/
 .socialMediaContainer{
     height: 50px;
     margin-right: auto;
