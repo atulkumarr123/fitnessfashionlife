@@ -28,6 +28,10 @@
     <script type="text/javascript"
         src="/js/customJs/createNewEditorScript.js">
     </script>
+    <script
+    type="text/javascript"
+    src="/js/customJs/custom.js">
+    </script>
 </head>
 <body>
 {{--@include('_sidebar')--}}
@@ -38,6 +42,7 @@
         @yield('article')
         @yield('recentUpdates')
         @yield('similar')
+        @yield('aboutUs')
 {{--        @include('ads._adplaceholder')--}}
         </div>
 </div>

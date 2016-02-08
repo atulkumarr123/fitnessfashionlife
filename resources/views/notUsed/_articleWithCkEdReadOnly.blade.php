@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/overridingCustom.css">
+{{--<link rel="stylesheet" href="/css/overridingCustom.css">--}}
 <div class="col-md-9" id="main-content-holder">
     <div class="row">
         <div class="col-md-12" id="google-ad-1">

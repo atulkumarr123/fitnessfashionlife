@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
+
 class PagesController extends Controller
 {
+
     public function about()
     {
-        return view('article');
+        return view('miscellaneous.about');
+    }
+    public function talkToUs()
+    {
+        return view('miscellaneous.talkToUs');
     }
 
     public function home()
@@ -21,4 +24,5 @@ class PagesController extends Controller
 //        dd($articles);
         return view('home')->with('articles', $articles);
     }
+
 }
