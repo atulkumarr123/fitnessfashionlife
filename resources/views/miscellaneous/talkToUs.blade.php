@@ -10,8 +10,8 @@
                 the very first step towards the journey of our togetherness is...</p>
 
             <p>you need to contact us on the following id...<br />
-                atulkumarr123@gmail.com<br />
-                We will contact you and will talk on how can you share money and credit with us...<br />
+                <a>contact@atulyaperspectives.com</a><br />
+                We will contact you and will talk on how can you move ahead with us...<br />
                 or you may contact us on either of the following links<br />
             <a href="https://www.pinterest.com/atulkumarr123/" target="_blank"><i class="fa fa-pinterest"></i></a>
             <a href="https://www.facebook.com/actoratulkumar/" target="_blank"><i class="fa fa-facebook"></i></a>

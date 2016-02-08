@@ -1,3 +1,6 @@
+.select2-selection__choice {
+    margin-top:2px !important;
+}
 .activeHome{
     color: #FFFFFF !important;
     background-color: #090909;

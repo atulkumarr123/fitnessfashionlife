@@ -1,3 +1,49 @@
+.css-typing
+{
+    width: 30em;
+    white-space:nowrap;
+    overflow:hidden;
+    -webkit-animation: type 5s steps(50, end);
+        animation: type 5s steps(50, end);
+    -moz-animation-iteration-count:infinite;
+    --animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    -o-animation-iteration-count:infinite;
+    animation-iteration-count:infinite;
+    animation-duration: 30s;
+    animation-delay: 10s;
+
+}
+
+@-o-keyframes type{
+    0%  { width: 0; }
+    60% { width: 100%}
+    100% { width: 100%}
+}
+@-moz-keyframes type{
+    0%  { width: 0; }
+    60% { width: 100%}
+    100% { width: 100%}
+}
+@keyframes type{
+    0%  { width: 0; }
+    60% { width: 100%}
+    100% { width: 100%}
+}
+
+@-webkit-keyframes type{
+    0%  { width: 0; }
+    60% { width: 100%}
+    100% { width: 100%}
+}
+
+
+
+.socialMediaTagLine {
+    font-size: 18px;
+    color: #4B9FB1;
+}
+
 .navbar-brand {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -6,7 +52,7 @@
 /*content: "\f015";*/
 /*}*/
 .socialMediaContainer{
-    height: 50px;
+    /*height: 50px;*/
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;

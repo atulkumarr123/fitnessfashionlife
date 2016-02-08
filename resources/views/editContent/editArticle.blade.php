@@ -1,5 +1,11 @@
 @extends('commons.layout')
-
+<script type="text/javascript"
+        src="/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+        src="/ckfinder/ckfinder.js"></script>
+<script type="text/javascript"
+        src="/js/customJs/createNewEditorScript.js">
+</script>
 @section('createArticleForm')
     <div class="col-md-9" id="main-content-holder">
         <div class="row">
