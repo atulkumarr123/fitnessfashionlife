@@ -17,23 +17,23 @@
 
 @-o-keyframes type{
     0%  { width: 0; }
-    40% { width: 100%}
+    20% { width: 100%}
     100% { width: 100%}
 }
 @-moz-keyframes type{
     0%  { width: 0; }
-    40% { width: 100%}
+    20% { width: 100%}
     100% { width: 100%}
 }
 @keyframes type{
     0%  { width: 0; }
-    40% { width: 100%}
+    20% { width: 100%}
     100% { width: 100%}
 }
 
 @-webkit-keyframes type{
     0%  { width: 0; }
-    40% { width: 100%}
+    20% { width: 100%}
     100% { width: 100%}
 }
 
@@ -48,9 +48,8 @@
     padding-top: 8px;
     padding-bottom: 8px;
 }
-/*.fa-home:before {*/
-/*content: "\f015";*/
-/*}*/
+
+
 .socialMediaContainer{
     /*height: 50px;*/
     margin-right: auto;
@@ -62,33 +61,6 @@
     font-size: 14px;
     line-height: 1.428571429;
 }
-
-/*.fa-facebook-square:before {*/
-    /*content: "\f082";*/
-    /*font-size:13px;*/
-/*}*/
-
-/*.customFb-share-button {*/
-    /*height: 20px;*/
-    /*width: 61px;*/
-    /*font: normal normal normal 12px/18px FontAwesome, Arial, sans-serif;*/
-    /*padding-left: 6px;*/
-    /*padding-right: 8px;*/
-    /*padding-top: 1px;*/
-    /*padding-bottom: 1px;*/
-    /*background-color: #4864B4;*/
-    /*border-radius: 2px;*/
-    /*vertical-align: top;*/
-/*}*/
-/*.customFb-share-button.focus {*/
-    /*color: #fff;*/
-    /*background-color: #286090;*/
-    /*}*/
-/*.customFb-share-button:hover {*/
-    /*color: #fff;*/
-    /*background-color: #295cc2;*/
-    /*}*/
-
 
 .twitter-follow-button {
     vertical-align: top;

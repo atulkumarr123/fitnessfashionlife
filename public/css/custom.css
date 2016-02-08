@@ -613,7 +613,6 @@ body{
         border-top-width: 0px;
         border-top-color: transparent;
         padding-bottom: 15px;
-        /*height: 315px;*/
         color: black;
         overflow: hidden
     }
@@ -630,6 +629,7 @@ body{
         border-top-width: 0px;
         border-top-color: transparent;
         padding-bottom: 15px;
+        margin-top: 15px;
         color: black;
         overflow: hidden
     }
