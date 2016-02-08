@@ -10,30 +10,30 @@
     -webkit-animation-iteration-count:infinite;
     -o-animation-iteration-count:infinite;
     animation-iteration-count:infinite;
-    animation-duration: 30s;
+    animation-duration: 40s;
     animation-delay: 10s;
 
 }
 
 @-o-keyframes type{
     0%  { width: 0; }
-    60% { width: 100%}
+    40% { width: 100%}
     100% { width: 100%}
 }
 @-moz-keyframes type{
     0%  { width: 0; }
-    60% { width: 100%}
+    40% { width: 100%}
     100% { width: 100%}
 }
 @keyframes type{
     0%  { width: 0; }
-    60% { width: 100%}
+    40% { width: 100%}
     100% { width: 100%}
 }
 
 @-webkit-keyframes type{
     0%  { width: 0; }
-    60% { width: 100%}
+    40% { width: 100%}
     100% { width: 100%}
 }
 
