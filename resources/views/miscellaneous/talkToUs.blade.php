@@ -9,7 +9,7 @@
                 So you want to work with us and you want to share the credit..<br />
                 the very first step towards the journey of our togetherness is...</p>
 
-            <p>you need to contact us on the following id...<br />
+            <p>you need to write us on...<br />
                 <a>contact@atulyaperspectives.com</a><br />
                 We will contact you and will talk on how can you move ahead with us...<br />
                 or you may contact us on either of the following links<br />

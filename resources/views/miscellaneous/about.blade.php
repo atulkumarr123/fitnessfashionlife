@@ -10,10 +10,10 @@
         <p><br />
             this site is founded by <a href="http://www.facebook.com/actoratulkumar" target="_blank">Mr. Atul Kumar</a>  to write your incredible(atulya) views...<br />
             Ok lill bit about him...<br />
-            till 2014 he did job as a Senior Soft Engg along with part time modeling,<br />
+            {{--till 2014 he did job as a Senior Soft Engg along with part time modeling,<br />--}}
             In 2014 he left His job(Soft engg) from CSC... and started his journey towards film making...<br />
             today He is a successful Model and has done many short films...<br />
-            He also writes his own stroies you can see his work on his social media platforms in the links given below...</p>
+            He also writes stroies/scripts you can see his work on his social media platforms in the links given below...</p>
 
         <p>You wanna hear more about our team and our work, contact on the followings:</p>
         <a href="https://www.pinterest.com/atulkumarr123/" target="_blank"><i class="fa fa-pinterest"></i></a>

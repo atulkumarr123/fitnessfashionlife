@@ -31,6 +31,41 @@
     font-size: 1.5em;
 }
 
+
+.blink_meForTagLine {
+    animation: blinker 7s linear infinite;
+    margin:0px;
+}
+
+.blink_meForTagLine:hover
+{
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+@-o-keyframes blinker{
+    0%  {}
+    40% {}
+    100% {}
+}
+@-moz-keyframes type{
+    0%  {}
+    40% {}
+    100% {}
+}
+@keyframes type{
+    0%  {}
+    40% {}
+    100% {}
+}
+
+@-webkit-keyframes type{
+    0%  {}
+    40% {}
+    100% {}
+}
+
 .blink_me {
     animation: blinker 3s linear infinite;
     margin:0px;
