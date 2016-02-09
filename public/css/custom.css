@@ -272,6 +272,14 @@ body{
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+@media only screen and (min-width: 300px) and (max-width: 374px) {
+    .giphy-embed {
+        display: block;
+        width: 294px !important;
+        height: 200px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;} }
+
 @media only screen and (min-width: 414px) and (max-width: 499px) {
     p img {
         display: block;
@@ -288,7 +296,9 @@ body{
     p img {
         display: block;
         width: 294px !important;
-        height: 200px !important; } }
+        height: 200px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;} }
 
 @media only screen and (min-width: 300px) and (max-width: 319px) {
     p img {
