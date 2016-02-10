@@ -22,4 +22,5 @@ Route::get('articles/{id}/edit','ArticlesController@edit');
 Route::post('articles','ArticlesController@store');
 Route::patch('articles/{id}','ArticlesController@update');
 Route::get('articles/filter/{category}', 'ArticlesControllerForCustomOperations@filterArticlesBasedOnCategory');
+Route::get('search', 'ArticlesControllerForCustomOperations@search');
 //Route:resource('articles', 'ArticlesController');

@@ -7,9 +7,13 @@
                     <a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">
                         <article class="media">
                             <h4 class="article-title-class">{{$article->title}}</h4>
-                            <h6 class="pull-right" style="margin:0px">{{$article->updated_at->toFormattedDateString()}}</h6>
+                            {{--<h4 class="article-title-class"><span style="color: red">sdkkfg</span>sdfg</h4>--}}
+                            <h6 class="pull-right" style="margin:0px">{{Carbon\Carbon::parse($article->updated_at)->toFormattedDateString()}}</h6>
+                            @if(property_exists ($article,'articleDetails'))
                             <img class="media-object" src="images/{{$article->articleDetails->get(0)->img_name}}">
-{{--                            <h5 class="article-title-class">{{$article->description}}</h5>--}}
+                            @else
+                                <img class="media-object" src="images/{{$article->img_name}}">
+                           @endif
                             <p class="article-body-class">
                             <h5> {{substr($article->description,0,75)}}{{'...'}}</h5>
                             </p>

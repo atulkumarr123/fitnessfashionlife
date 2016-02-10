@@ -1,3 +1,39 @@
+
+/*@media (min-width:0px) and (max-width:767px) {*/
+    /*.navbar {*/
+        /*display: table;*/
+        /*width: 100%;*/
+    /*}*/
+    /*.navbar-brand,*/
+    /*.navbar-search,*/
+    /*.navbar-toggle { display: table-cell }*/
+    /*.navbar-search {*/
+        /*padding: 7.5px 10px 0 0;*/
+        /*width: 1%;*/
+    /*}*/
+/*}*/
+/*@media (max-width:400px) {*/
+    /*.navbar-search {*/
+        /*padding: 7.5px 15px;*/
+        /*float: left;*/
+        /*clear: both;*/
+        /*width: 100%;*/
+    /*}*/
+/*}*/
+/*@media (min-width:768px) {*/
+    /*.navbar-search {*/
+        /*float: left;*/
+        /*margin: 7.5px 0;*/
+    /*}*/
+/*}*/
+
+
+
+
+
+
+
+
 .select2-selection__choice {
     margin-top:2px !important;
 }

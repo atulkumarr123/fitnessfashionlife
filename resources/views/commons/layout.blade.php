@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/socialMediaFontsFamily.css">
     <link rel="stylesheet" href="/css/fromGulp/carouselModeToListArticles.css">
-
+    <link rel="stylesheet" href="/css/searchBar.css">
     <script type="text/javascript"
             src="/js/jquery.min.js"></script>
     <script type="text/javascript"
@@ -23,6 +23,10 @@
     <script
     type="text/javascript"
     src="/js/customJs/custom.js">
+    </script>
+    <script
+            type="text/javascript"
+            src="/js/customJs/searchBar.js">
     </script>
 </head>
 <body>

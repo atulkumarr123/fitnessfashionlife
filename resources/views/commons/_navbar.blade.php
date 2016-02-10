@@ -17,28 +17,35 @@
                 <li><a href="/articles/filter/relations">Relationships</a></li>
                 <li><a href="/articles/filter/crazyFacts">Crazy Facts</a></li>
                 <li><a href="/articles/filter/mediaStories">Media Stories</a></li>
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
-                        {{--Dropdown--}}
-                        {{--<span class="caret"></span></a>--}}
-                    {{--<ul class="dropdown-menu dropdown-menu-inverse" >--}}
-                        {{--<li><a href="#">Action</a></li>--}}
-                        {{--<li><a href="#">Another action</a></li>--}}
-                        {{--<li><a href="#">Something else here</a></li>--}}
-                        {{--<li role="separator" class="divider"></li>--}}
-                        {{--<li class="dropdown-header">Nav header</li>--}}
-                        {{--<li><a href="#">Separated link</a></li>--}}
-                        {{--<li><a href="#">One more separated link</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
+
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/talkToUs">Talk to Us</a></li>
-                {{--<li><a href="#">Static top <span class="sr-only">(current)</span></a></li>--}}
-                <li><a href="/about">About Us</a></li>
+                {{--<li><a href="/talkToUs">Talk to Us</a></li>--}}
+                {{--<li><a href="/about">About Us</a></li>--}}
+                <li>
+                    <form class="navbar-left navbar-search" action="/search">
+                        <div class="" style="padding-top:7px;padding-bottom:7px">
+                            <div class="col-md-12" style="padding-right:0px">
+                                <div style=" display: flex;">
+                                    <input type="text" class="form-control empty" name = "search" id="search"  onfocus="this.placeholder = ''" onblur="this.placeholder = '&#xF002;  Search...'"  placeholder="&#xF002; Search..." required/>
+                                    <button type="submit" id="searchButton" class="fa fa-search"></button>
+
+                                </div>
+
+                            </div>
+
+                            </div>
+                    </form>
+
+
+                </li>
+
+
             </ul>
+
         </div><!--/.nav-collapse -->
+
     </div>
 </nav>
 

@@ -14,7 +14,7 @@
                 This is a google ad template.</p>
             </div>
         </div>
-        {!! Form::open(['method'=>'patch','action'=>['ArticlesController@update',$articleDetails->get(0)->article_id],'enctype'=>'multipart/form-data"'])!!}
+        {!! Form::open(['method'=>'patch','class','','action'=>['ArticlesController@update',$articleDetails->get(0)->article_id],'enctype'=>'multipart/form-data"'])!!}
         <div class="row">
             <div class="col-md-12" id="outerDiv">
                 {{--<form enctype="multipart/form-data" action="/articles/{{$articleDetails->get(0)->article_id}}" method="put">--}}
@@ -42,6 +42,7 @@
                             document.getElementById('articleBody').id = 'articleBody'+count;
                             document.getElementById('articleBody'+count).name = 'articleBody'+count;
                             CKEDITOR.disableAutoInline = true;
+                            CKEDITOR.config.allowedContent = true;
                             CKEDITOR.inline('articleBody'+ count, {
                                 filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
                                 filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'

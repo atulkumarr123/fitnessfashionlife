@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\ArticleDetail;
-use App\Http\Requests\ArticleRequest;
-
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Article;
+use App\ArticleDetail;
+use App\Http\Requests;
+use App\Http\Requests\ArticleRequest;
 use App\Tag;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
-use PhpParser\Node\Expr\Array_;
 
 class ArticlesController extends Controller
 {
@@ -60,6 +55,7 @@ class ArticlesController extends Controller
         try {
             $article = Article::create(['title' => $request->get('title'),
                 'description' => $request->get('description'),
+                'body' => $request->get('articleBody0'),
                 'img_name' => $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"')]);
 
             $tagsFromRequest = $request->input('tags');
