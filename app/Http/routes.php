@@ -11,16 +11,23 @@
 |
 */
 
-
+//Miscellaneous Functionality
 Route::get('about', 'PagesController@about');
 Route::get('talkToUs', 'PagesController@talkToUs');
+
+//Subscription Functionality
+Route::post('subscribe','SubscribersController@store');
+Route::post('articles/subscribe','SubscribersController@store');
+
+//Articles
+Route::get('search', 'ArticlesControllerForCustomOperations@search');
 Route::get('/','ArticlesController@index');
 Route::get('articles','ArticlesController@index');
 Route::get('articles/create','ArticlesController@create');
-Route::get('articles/{id}','ArticlesController@show');
-Route::get('articles/{id}/edit','ArticlesController@edit');
 Route::post('articles','ArticlesController@store');
 Route::patch('articles/{id}','ArticlesController@update');
+Route::get('articles/{id}','ArticlesController@show');
+Route::get('articles/{id}/edit','ArticlesController@edit');
 Route::get('articles/filter/{category}', 'ArticlesControllerForCustomOperations@filterArticlesBasedOnCategory');
-Route::get('search', 'ArticlesControllerForCustomOperations@search');
+
 //Route:resource('articles', 'ArticlesController');
