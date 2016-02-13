@@ -20,11 +20,11 @@ class ArticlesController extends Controller
      */
     public function index()
     {
+//        Session::forget('isSubscribed');
 //        $articles = Article::all()->orderBy('counter', 'asc');
         $articles = Article::orderBy('id','desc')->get();
-//        Log::info("Here we go ".$articles);
-//        dd($articles);
         return view('viewContent.home')->with('articles', $articles);
+//        return view('miscellaneous.subscribeForm')->with('articles', $articles);
     }
 
     /**
