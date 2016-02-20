@@ -52,6 +52,10 @@
         @yield('recentUpdates')
         @yield('similar')
         @yield('aboutUs')
+        @yield('registerUser')
+        @yield('login')
+        @yield('resetPassword')
+        @yield('home')
 {{--        @include('ads._adplaceholder')--}}
         @include('miscellaneous._subscribeForm')
         </div>

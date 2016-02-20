@@ -1,11 +1,11 @@
 //Subscription
-$(document).ready(function() {
-    if(!$("input[name=isSubscribed]").val()){
-        setTimeout(function(){
-            $("#myModal").modal({effect: 'fadein', direction : 'left',duration:'2000', backdrop:'static',keyboard:false});
-        }, 60000)
-    }
-});
+//$(document).ready(function() {
+//    if(!$("input[name=isSubscribed]").val()){
+//        setTimeout(function(){
+//            $("#myModal").modal({effect: 'fadein', direction : 'left',duration:'2000', backdrop:'static',keyboard:false});
+//        }, 60000)
+//    }
+//});
 
 $(function(){
     $('#subscribe').on('submit',function(e){

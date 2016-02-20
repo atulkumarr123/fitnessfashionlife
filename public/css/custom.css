@@ -1,4 +1,6 @@
-
+.container-fluid{
+    margin-top:55px;
+}
 /*.modal_close { position: absolute; top: 12px; right: 12px; display: block; width: 14px; height: 14px; background: url(../images/modal_close.png); z-index: 2; }*/
 
 /*#lean_overlay {*/
@@ -239,6 +241,7 @@
 
 #mainRow{
     background-color: white;
+    /*margin-top:50px;*/
 }
 
 
