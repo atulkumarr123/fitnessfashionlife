@@ -1,3 +1,7 @@
+article p{
+    line-height: 1.228571429;
+    color: #555555;
+}
 .container-fluid{
     margin-top:55px;
 }
