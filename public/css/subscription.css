@@ -5,7 +5,8 @@ button.close{
     -o-transform: scale(1.3);
     -moz-transform: scale(1.3);
     padding-top : 2px;
-    padding-right : 7px;
+    padding-right : 6px;
+    font-size: 18px;
     /*color: #b30000;*/
 }
 #myModal{

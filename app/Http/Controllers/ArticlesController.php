@@ -7,8 +7,11 @@ use App\ArticleDetail;
 use App\Http\Requests;
 use App\Http\Requests\ArticleRequest;
 use App\Tag;
+use App\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 
 class ArticlesController extends Controller
@@ -21,8 +24,10 @@ class ArticlesController extends Controller
     public function index()
     {
 //        Session::forget('isSubscribed');
-//        $articles = Article::all()->orderBy('counter', 'asc');
+        if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
         $articles = Article::orderBy('id','desc')->get();
+        else
+        $articles = Article::where('isPublishedByAdmin', 1)->orderBy('id', 'desc')->get();
         return view('viewContent.home')->with('articles', $articles);
 //        return view('miscellaneous.subscribeForm')->with('articles', $articles);
     }
@@ -50,13 +55,14 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-
+//dd(Auth::user());
         DB::beginTransaction();
         try {
             $article = Article::create(['title' => $request->get('title'),
                 'description' => $request->get('description'),
                 'body' => $request->get('articleBody0'),
-                'img_name' => $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"')]);
+                'img_name' => $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"'),
+                'user_id' => Auth::user()->id]);
 
             $tagsFromRequest = $request->input('tags');
             Log::info("hereeee");
@@ -171,7 +177,8 @@ public function get_string_between($string, $start, $end){
             article_tag.article_id = articles.id and
             article_tag.tag_id = tags.id and
             tags.name Not In (select name from tags where name NOT IN (' . $removedBrackets . ')) and
-            articles.id<>' . $id . '
+            articles.id<>' . $id . ' and
+            articles.isPublishedByAdmin=1
             group by articles.id
             HAVING count(articles.id)='.$numberOfIds.'');
                 $numberOfIds = $numberOfIds-1;
@@ -186,10 +193,10 @@ public function get_string_between($string, $start, $end){
 else{
     $similarArticles = emptyArray();
 }
-
+        $userOfThisArticle = User::where('id', $article->user_id)->get()->first();
 //        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
 //        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
-        return view('viewContent.article')->with(compact('article','selectedTags','similarArticles'));
+        return view('viewContent.article')->with(compact('article','selectedTags','similarArticles','userOfThisArticle'));
     }
 
     /**
@@ -205,12 +212,13 @@ else{
 //        return view('newarticle')->with(compact('tags'));
         $article = Article::findorFail($id);
         $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->get();
-        $title = $articleDetails->get(0)->article->title;
+//        dd($articleDetails);
+        $title = $article->title;
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('id')->toArray();
-        $description = $articleDetails->get(0)->article->description;
+        $description = $article->description;
         return view('editContent.editArticle')->
-            with(compact('articleDetails', 'title','description','selectedTags','tags'));
+            with(compact('articleDetails', 'title','description','selectedTags','tags','article'));
 //            ->with('selectedTags',$selectedTags->toArray());
     }
 
@@ -223,14 +231,14 @@ else{
      */
     public function update(ArticleRequest $request, $id)
     {
-//        Log::info("fffff".$request->get('articleBody6'));
-//        dd($request);
+//        dd($isPublishedByAdmin);
 //        Log::info("update(ArticleRequest $request, $id)");
         DB::beginTransaction();
         try {
             $article = Article::findorFail($id);
             $article->title = $request->get('title');
             $article->description = $request->get('description');
+            $article->isPublishedByAdmin = ($request->get('isPublishedByAdmin') =='on' ? 1 : 0);
             $article->body = $request->get('articleBody0');
             $article->img_name = $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"');
 

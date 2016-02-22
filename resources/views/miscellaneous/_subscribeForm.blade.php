@@ -9,7 +9,7 @@
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content" id="modalContent">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
                 <div class="modal-header" {{--style="padding:35px 50px;"--}}>
 
                     <h4><span class="fa fa-smile-o"></span>want to read more stuff like this,

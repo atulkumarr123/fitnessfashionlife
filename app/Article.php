@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class  Article extends Model
 {
-    protected $fillable = ['title', 'description','body', 'published_at','img_name'];
+    protected $fillable = ['title', 'description','body', 'published_at','img_name','user_id','isPublishedByAdmin'];
 
     public function articleDetails(){
         return $this->hasMany('App\ArticleDetail');
@@ -17,8 +17,8 @@ class  Article extends Model
         return $this->belongsToMany('App\Tag');
     }
 
-//    public function article(){
-//        return $this->belongsTo('App\Category');
-//    }
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 
 }

@@ -1,9 +1,29 @@
+.navbar {min-height: 0px;
+    margin-bottom: 10px;}
+.navbar-brand {height: 40px;}
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+         padding-top: 10px;
+         padding-bottom: 10px;
+    }
+}
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+#searchForm{
+    margin-bottom:0px;
+}
+
 article p{
     line-height: 1.228571429;
     color: #555555;
+    margin-bottom: 0px;
 }
 .container-fluid{
-    margin-top:55px;
+    margin-top:45px;
 }
 /*.modal_close { position: absolute; top: 12px; right: 12px; display: block; width: 14px; height: 14px; background: url(../images/modal_close.png); z-index: 2; }*/
 
@@ -214,9 +234,10 @@ article p{
 .tagLabel{
  font-size:16px;
 }
-.tagContainer{
+.customContainer1{
  padding-left:12px;
  padding-right:12px;
+ text-align: center;
 }
 .tag {
     padding-left:12px;
@@ -336,6 +357,9 @@ body{
     line-height: 1.428571429;
     color: #9d9d9d;
     white-space: nowrap;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #090909;
 }
 
 .dropdown-menu-inverse > li > a:hover,

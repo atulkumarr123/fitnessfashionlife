@@ -1,3 +1,8 @@
+.facebookLogin{
+    background-color: #4A66B6;
+    border-color: #4A66B6;
+    padding: 4.5px 12px;
+}
 @media only screen and (min-width: 375px){
     .fb-like, .twitter-share-button, .twitter-follow-button{
     transform: scale(1.15);

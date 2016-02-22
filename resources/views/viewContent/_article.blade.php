@@ -10,6 +10,12 @@
                     </article>
             </div>
             @include('tagging._tagsViewMode')
+            <div class="customContainer1">
+            @if($userOfThisArticle==Auth::user()||
+            (Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin')))
+            <a  class="btn btn-primary" style="align:center" href="/articles/{{$article->id}}/edit" role="button">Click here to edit this article</a>
+            @endif
+            </div>
             @include('socialMedia._socialIcons')
             @include('socialMedia._fbCommentSection')
         </div>

@@ -26,7 +26,8 @@ class ArticlesControllerForCustomOperations extends ArticlesController
 //->where('title', 'LIKE', '%' . $request->get('title') . '%')->paginate(10);
         $title = $request->get('search');
         DB::connection()->enableQueryLog();
-        $articles = collect(DB::select("select articles.* from articles where title like '%$title%'"));
+        $articles = collect(DB::select("select articles.* from articles where title like '%$title%' and
+            articles.isPublishedByAdmin=1"));
         $queries = DB::getQueryLog();
         Log::info($queries);
 //        dd(Carbon::parse($articles->get(0)->updated_at)->toFormattedDateString());

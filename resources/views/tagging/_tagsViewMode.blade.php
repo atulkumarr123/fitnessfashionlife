@@ -1,4 +1,4 @@
-<div class="tagContainer">
+<div class="customContainer1">
     <label class="tagLabel" for="description">Tags:</label>
     <div>
     @foreach ($selectedTags as $selectedTag)
