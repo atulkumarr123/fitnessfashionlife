@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
+use Laracasts\Flash\Flash;
 
 class ArticlesController extends Controller
 {
@@ -96,6 +97,7 @@ class ArticlesController extends Controller
         }
 //            dd($article);
             $article->articleDetails()->saveMany($collectionOfDetails);
+            Flash::overlay('congratulations! your Article has been sent to Verification Department, It will be live sooner');
             DB::commit();
         } catch (\Exception $e) {
             Log::info("error....");
