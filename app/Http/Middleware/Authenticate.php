@@ -37,7 +37,7 @@ class Authenticate
      */
     public function handle($request, Closure $next,$mode)
     {
-        if(!Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin')){
+        if(!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))){
         if($mode=='edit'){
         $article = Article::where('id', $request->id)->get()->first();
         $user = User::where('id', $article->user_id)->get()->first();
@@ -48,6 +48,16 @@ class Authenticate
                 return redirect()->guest('auth/login');
             }
         }
+        }
+        else if($mode=='show'){
+            $article = Article::where('id', $request->id)->get()->first();
+            if (!$article->isPublishedByAdmin) {
+                if ($request->ajax()) {
+                    return response('Unauthorized.', 401);
+                } else {
+                    return redirect()->guest('auth/login');
+                }
+            }
         }
         else{
             if ($this->auth->guest()) {

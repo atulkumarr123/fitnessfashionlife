@@ -97,8 +97,8 @@ class ArticlesController extends Controller
         }
 //            dd($article);
             $article->articleDetails()->saveMany($collectionOfDetails);
-            Flash::overlay('congratulations! your Article has been sent to Verification Department, It will be live sooner');
             DB::commit();
+            Flash::overlay('congratulations! your Article has been sent to Verification Department, It will be live sooner');
         } catch (\Exception $e) {
             Log::info("error....");
             DB::rollback();
@@ -289,6 +289,9 @@ else{
                 }
             }
             DB::commit();
+            if(!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))) {
+                Flash::overlay('Your Article has been sent to Verification Department, It will be live sooner');
+            }
         } catch (\Exception $e) {
             Log::info("error....");
             DB::rollback();

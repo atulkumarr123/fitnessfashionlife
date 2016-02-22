@@ -13,7 +13,7 @@
                 <div class="modal-header" {{--style="padding:35px 50px;"--}}>
 
                     <h4><span class="fa fa-smile-o"></span>want to read more stuff like this,
-                        Join us and enjoy life</h4>
+                        Join us for free today!</h4>
                 </div>
                 <div class="modal-body" style="padding-bottom:40px;padding-top:5px">
                     {!! Form::open(['url'=>'subscribe','id'=>'subscribe'])!!}
