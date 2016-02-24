@@ -1,11 +1,11 @@
 //Subscription
-//$(document).ready(function() {
-//    if(!$("input[name=isSubscribed]").val()){
-//        setTimeout(function(){
-//            $("#myModal").modal({effect: 'fadein', direction : 'left',duration:'2000', backdrop:'static',keyboard:false});
-//        }, 60000)
-//    }
-//});
+$(document).ready(function() {
+    if(!$("input[name=isSubscribed]").val()){
+        setTimeout(function(){
+            $("#myModal").modal({effect: 'fadein', direction : 'left',duration:'2000', backdrop:'static',keyboard:false});
+        }, 1800000)
+    }
+});
 
 $(function(){
     $('#subscribe').on('submit',function(e){
@@ -15,8 +15,8 @@ $(function(){
         $.ajax({
             headers: {'X-CSRF-TOKEN': $("input[name=_token]").val()},
             type:"post",
-            url:'subscribe',
-            data:{'email': $("input[name=email]").val()},
+            url:'http://atulyaperspectives.com//subscribe',
+            data:{'email': $("input[id=emailId]").val()},
             dataType: 'json',
             success: function(data){
                 console.log(data);

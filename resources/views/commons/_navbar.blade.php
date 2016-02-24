@@ -13,9 +13,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="/articles/filter/fitness">Fitness</a></li>
                 <li><a href="/articles/filter/fashion">Fashion</a></li>
-                <li><a href="/articles/filter/life">Life</a></li>
+                {{--<li><a href="/articles/filter/life">Life</a></li>--}}
                 <li><a href="/articles/filter/relations">Relationships</a></li>
-                <li><a href="/articles/filter/crazyFacts">Crazy Facts</a></li>
+                <li><a href="/articles/filter/crazyFacts">Wierd Facts</a></li>
                 <li><a href="/articles/filter/mediaStories">Media Stories</a></li>
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

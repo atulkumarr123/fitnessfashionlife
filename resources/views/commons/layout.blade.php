@@ -47,6 +47,7 @@
 @include('commons._navbar')
 <div class="container">
         <div class="row" id="mainRow">
+        @include('flash::message')
         @yield('createArticleForm')
         @yield('article')
         @yield('recentUpdates')

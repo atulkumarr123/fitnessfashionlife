@@ -47,9 +47,14 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
+
                                     <button type="submit" class="btn btn-primary">Login</button> OR
-                                    <a class="btn btn-primary" href="/auth/register" role="button">New User Sign Up</a>
+                                    <a  class="btn btn-info facebookLogin" href="/auth/facebook" role="button"><i class="fa fa-facebook-square fa-2x"></i> <span style="vertical-align:top;">Facebook Login</span></a>
+
+                                    <div class="authButton">
+                                    <a class="btn btn-primary " href="/auth/register" role="button">New User Sign Up</a>
                                     <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Password?</a>
+                                    </div>
                                 </div>
                             </div>
                         </form>

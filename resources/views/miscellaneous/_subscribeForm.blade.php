@@ -1,6 +1,6 @@
 <input type="hidden" name="isSubscribed" id="isSubscribed" value="{!!Session::get('isSubscribed')!!}" class="form-control">
 <div class="container" id="subscribingModel">
-    @include('flash::message')
+
     <!-- Trigger the modal with a button -->
     {{--<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>--}}
 
@@ -22,7 +22,7 @@
                             <div class="row" id="errors" style="padding-bottom: 5px; padding-left:15px;padding-right:15px;color: red;">
                             </div>
                             <label for="email"><span class="fa fa-user"></span> E-mail</label>
-                            <input type="email" name="email"  required class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" name="email"  required class="form-control" id="emailId" placeholder="Enter email">
                         </div>
                     <div class="form-group">
                         {{--<button type="submit" class="btn btn-success btn-block">--}}{{--<span class="fa fa-off"></span>--}}{{--Go</button>--}}

@@ -1,4 +1,6 @@
-
+$(document).ready(function() {
+    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+});
 
 $(document).ready(function(){
     if(this.location.pathname=='/'){
