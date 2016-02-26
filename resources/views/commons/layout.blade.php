@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/socialMediaFontsFamily.css">
     <link rel="stylesheet" href="/css/fromGulp/carouselModeToListArticles.css">
     <link rel="stylesheet" href="/css/searchBar.css">
-    {{--<link rel="stylesheet" href="/css/modal.css">--}}
+    <link rel="stylesheet" href="/css/authPages.css">
 
 
     <script type="text/javascript"

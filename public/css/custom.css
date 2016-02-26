@@ -1,17 +1,77 @@
+.caret {
+    border-top: 4px solid;
+}
+.userAuthMenuSmallDevices{
+        display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    margin-left:5px;
+}
+.searchFormMenuSmallDevices{
+    display: flex;
+}
+.userAuthMenuSmallDevices a{
+    color: #959D9D;
+    text-decoration: none;
+}
+.userAuthMenuSmallDevices > a:hover, #userAuthMenu  > li > a:focus {
+    color: #fff;
+    background-color: transparent;
+}
+@media only screen and (min-width: 768px){
+    .userAuthMenuSmallDevices, .searchFormMenuSmallDevices {
+    display: none;
+}}
+
+
+.navlink {
+    float: left;
+    height: 50px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
 .alert{
     margin-top: 40px;
 }
 .authButton{
     margin-top: 2px;
 }
+.navbar-search input {
+    box-sizing: border-box;
+    -ms-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+#search{
+    width: 200px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 993px) {
     .nav > li > a {
-    padding: 5px 5px;
+    padding: 8px 8px;
+        font-size: 15px;
     }
-    #searchForm{
+    #search{
         width:160px;
     }
 }
+@media only screen and (max-width: 993px) {
+    #search{
+        width:160px;
+    }
+}
+@media only screen and (min-width: 298px)
+and (max-width: 374px) {
+    #search{
+        width:90px;
+    }
+}
+
 .navbar-brand {
     padding: 15px 5px;
 }
