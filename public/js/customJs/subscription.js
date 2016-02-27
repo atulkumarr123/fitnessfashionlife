@@ -3,7 +3,7 @@ $(document).ready(function() {
     if(!$("input[name=isSubscribed]").val()){
         setTimeout(function(){
             $("#myModal").modal({effect: 'fadein', direction : 'left',duration:'2000', backdrop:'static',keyboard:false});
-        }, 1800000)
+        }, 1500000)
     }
 });
 

@@ -14,6 +14,8 @@
 //Miscellaneous Functionality
 Route::get('about', 'PagesController@about');
 Route::get('talkToUs', 'PagesController@talkToUs');
+Route::get('policy', 'PagesController@policy');
+Route::get('termsConditions', 'PagesController@termsConditions');
 
 //Subscription Functionality
 Route::post('subscribe','SubscribersController@store');

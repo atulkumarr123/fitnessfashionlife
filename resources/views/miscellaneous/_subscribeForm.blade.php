@@ -28,7 +28,7 @@
                         {{--<button type="submit" class="btn btn-success btn-block">--}}{{--<span class="fa fa-off"></span>--}}{{--Go</button>--}}
                         {{--<button type="submit" class="btn btn-success btn-block">--}}{{--<span class="fa fa-off"></span> --}}{{--Join us</button>--}}
                         {{--<button type="button" class="btn btn-primary" style="width:40%;padding-left:5px;">No Thanks!</button>--}}
-                        <button type="submit" class="btn btn-success" style="width:100%"> Go</button>
+                        <button type="submit" class="btn btn-success" style="width:100%"> Yes, I want to read more!</button>
                         </div>
                     {!! Form::close()!!}
 </div>
@@ -39,7 +39,7 @@
 <script>
 $('#flash-overlay-modal').modal();
 $(document).ready(function(){
-$("#myBtn").click(function(){
+$(".myBtn").click(function(){
 $("#myModal").modal({backdrop:'static',keyboard:false});
 });
 });

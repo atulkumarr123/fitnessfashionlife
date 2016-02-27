@@ -17,6 +17,14 @@ class PagesController extends Controller
     {
         return view('miscellaneous.talkToUs');
     }
+    public function policy()
+    {
+        return view('miscellaneous.policy');
+    }
+    public function termsConditions()
+    {
+        return view('miscellaneous.termsConditions');
+    }
 
     public function home()
     { Log::info("First line");

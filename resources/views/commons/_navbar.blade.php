@@ -16,14 +16,14 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-inverse" >
                         <li><a href="/articles/create"> Write Blog <i class="fa fa-pencil"></i></a></li>
-                        <li><a id="myBtn" style="cursor:pointer">Read regularly</a></li>
+                        <li><a class="myBtn" style="cursor:pointer">Read regularly</a></li>
                         <li role="separator" class="divider"></li>
                         @if(Auth::check())
                             <li><a href="/auth/logout">Log Out <i class="fa fa-sign-out"></i>{{Auth::user()->name}}</a></li>
                         @endif
                         @if(Auth::guest())
                             <li><a href="/auth/login">Sign In <i class="fa fa-sign-in"></i></a></li>
-                            <li><a href="/auth/register">Sign Up <i class="fa fa-chevron-up"></i></a></li>
+                            <li><a href="/auth/register">Sign Up <i class="fa fa-collapse-up"></i></a></li>
                         @endif
                     </ul>
                 </li>
@@ -89,11 +89,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i>
+                        @if(Auth::check())
+                        {{Auth::user()->name}}
+                            @else
+                            <i class="fa fa-user"></i>
+                        @endif
                         <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-inverse" >
+                    <ul class="dropdown-menu dropdown-menu-inverse">
                         <li><a href="/articles/create"> Write Blog <i class="fa fa-pencil"></i></a></li>
-                        <li><a id="myBtn" style="cursor:pointer">Read regularly</a></li>
+                        <li><a class="myBtn" style="cursor:pointer">Read regularly</a></li>
                         <li role="separator" class="divider"></li>
                         @if(Auth::check())
                             <li><a href="/auth/logout">Log Out <i class="fa fa-sign-out"></i>{{Auth::user()->name}}</a></li>
