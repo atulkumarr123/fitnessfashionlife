@@ -3,6 +3,7 @@
 namespace Illuminate\Support;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 
 abstract class Manager
@@ -76,6 +77,8 @@ abstract class Manager
      */
     protected function createDriver($driver)
     {
+        Log::info("RAM");
+        Log::info($driver);
         $method = 'create'.ucfirst($driver).'Driver';
 
         // We'll check to see if a creator method exists for the given driver. If not we

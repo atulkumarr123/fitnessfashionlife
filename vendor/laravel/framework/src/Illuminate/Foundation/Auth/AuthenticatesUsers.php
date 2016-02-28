@@ -5,7 +5,6 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Log;
 use Laracasts\Flash\Flash;
 
 trait AuthenticatesUsers
@@ -19,9 +18,7 @@ trait AuthenticatesUsers
      */
     public function getLogin()
     {
-        Log::info("in getLoginaa");
         if (view()->exists('auth.authenticate')) {
-            Log::info("in getLogin");
             return view('auth.authenticate');
         }
 
@@ -85,7 +82,7 @@ trait AuthenticatesUsers
         if (method_exists($this, 'authenticated')) {
             return $this->authenticated($request, Auth::user());
         }
-        Flash::success('logged in');
+        Flash::success('You are logged in');
         return redirect()->intended($this->redirectPath());
     }
 

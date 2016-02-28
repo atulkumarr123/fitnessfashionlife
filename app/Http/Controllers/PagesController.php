@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\SMS\Facades\SMS;
 
 class PagesController extends Controller
 {
@@ -33,4 +35,15 @@ class PagesController extends Controller
         return view('home')->with('articles', $articles);
     }
 
+    public function sendEmailReminder()
+    {
+        SMS::send('emails.reminder', [], function($sms) {
+            $sms->to('9910893838','airtel');
+        });
+//
+//        Mail::send('emails.reminder', ['name' => 'Rohan'], function ($m) {
+//            $m->to('+919910893838@airtelap.com', 'Kumar')->subject('Your Reminder!');
+//        });
+        return "Your email has been sent successfully";
+    }
 }

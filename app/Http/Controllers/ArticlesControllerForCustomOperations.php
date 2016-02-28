@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +15,10 @@ class ArticlesControllerForCustomOperations extends ArticlesController
 
     public function filterArticlesBasedOnCategory($category)
     {  DB::connection()->enableQueryLog();
-        $articles = Article::where('category', $category)->orderBy('id', 'asc')->get();
-        $queries = DB::getQueryLog();
-        Log::info($queries);
+        if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
+        $articles = Article::where('category', $category)->orderBy('id', 'desc')->get();
+        else
+            $articles = Article::where('isPublishedByAdmin', 1)->where('category', $category)->orderBy('id', 'desc')->get();
         return view('viewContent.home')->with(compact('articles'));
     }
 
@@ -24,14 +26,13 @@ class ArticlesControllerForCustomOperations extends ArticlesController
     {
 //        $articles = DB::table('articles')
 //->where('title', 'LIKE', '%' . $request->get('title') . '%')->paginate(10);
-        $title = $request->get('search');
-        DB::connection()->enableQueryLog();
-        $articles = collect(DB::select("select articles.* from articles where title like '%$title%' and
-            articles.isPublishedByAdmin=1"));
+        $searchKey = $request->get('search');
+        if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
+            $articles = Article::where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('id', 'desc')->get();
+        else
+            $articles = Article::where('isPublishedByAdmin', 1)->where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('id', 'desc')->get();
         $queries = DB::getQueryLog();
         Log::info($queries);
-//        dd(Carbon::parse($articles->get(0)->updated_at)->toFormattedDateString());
-
         $search = $request->get('search');
         return view('viewContent.home')->with(compact('articles','search'));
     }

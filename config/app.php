@@ -147,6 +147,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        SimpleSoftwareIO\SMS\SMSServiceProvider::class
 
     ],
 
@@ -200,6 +201,7 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'SMS' => SimpleSoftwareIO\SMS\Facades\SMS::class
     ],
 
 ];

@@ -16,6 +16,7 @@ Route::get('about', 'PagesController@about');
 Route::get('talkToUs', 'PagesController@talkToUs');
 Route::get('policy', 'PagesController@policy');
 Route::get('termsConditions', 'PagesController@termsConditions');
+Route::get('email', 'PagesController@sendEmailReminder');
 
 //Subscription Functionality
 Route::post('subscribe','SubscribersController@store');
