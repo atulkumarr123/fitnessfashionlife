@@ -38,8 +38,9 @@ class Authenticate
     public function handle($request, Closure $next,$mode)
     {
         if(!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))){
-        if($mode=='edit'){
+        if($mode=='edit'||$mode=='delete'){
         $article = Article::where('id', $request->id)->get()->first();
+//            dd($article);
         $user = User::where('id', $article->user_id)->get()->first();
         if ($this->auth->guest()||(Auth::user()!=$user)) {
             if ($request->ajax()) {
@@ -51,13 +52,14 @@ class Authenticate
         }
         else if($mode=='show'){
             $article = Article::where('id', $request->id)->get()->first();
-            if (!$article->isPublishedByAdmin) {
+            if(Auth::check()){
+            if (!$article->isPublishedByAdmin&&$article->user_id!=Auth::user()->id) {
                 if ($request->ajax()) {
                     return response('Unauthorized.', 401);
                 } else {
                     return redirect()->guest('auth/login');
                 }
-            }
+            }}
         }
         else{
             if ($this->auth->guest()) {

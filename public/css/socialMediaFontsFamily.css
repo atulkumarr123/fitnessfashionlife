@@ -1,8 +1,30 @@
-.facebookLogin{
+#googleLogin{
+    background: url('/images/icons/G_is_For_Google_New_Logo_Thumb.png') transparent 5px 50% no-repeat;
+    margin-bottom: 3px;
+    color:black;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+#googleLogin  > a:hover{
+    color: black;
+    background-color: transparent;
+    border-color: #269abc;
+}
+#socialLogin{
     background-color: #4A66B6;
     border-color: #4A66B6;
     padding: 4.5px 12px;
+
 }
+#socialLogin  > a:hover{
+    background-color: #4A66B6;
+    border-color: #4A66B6;
+}
+
 @media only screen and (min-width: 375px){
     .fb-like, .twitter-share-button, .twitter-follow-button{
     transform: scale(1.15);

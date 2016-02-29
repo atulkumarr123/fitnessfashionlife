@@ -26,9 +26,19 @@ class ArticlesController extends Controller
     {
 //        Session::forget('isSubscribed');
         if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
-        $articles = Article::orderBy('id','desc')->get();
-        else
-        $articles = Article::where('isPublishedByAdmin', 1)->orderBy('id', 'desc')->get();
+        $articles = Article::orderBy('updated_at','desc')->get();
+        else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
+            DB::connection()->enableQueryLog();
+            $articlesPublishedByAdminAndDoesntBelongToCurrentUser = Article::where('isPublishedByAdmin', 1)->
+            where('user_id', '!=',Auth::user()->id)->orderBy('updated_at', 'desc')->get();
+            $queries = DB::getQueryLog();
+            $articles = Auth::user()->articles()->get();
+            $articles = $articles->merge($articlesPublishedByAdminAndDoesntBelongToCurrentUser);
+//            dd($articles);
+
+        }
+            else
+        $articles = Article::where('isPublishedByAdmin', 1)->orderBy('updated_at', 'desc')->get();
         return view('viewContent.home')->with('articles', $articles);
 //        return view('miscellaneous.subscribeForm')->with('articles', $articles);
     }
@@ -98,7 +108,10 @@ class ArticlesController extends Controller
 //            dd($article);
             $article->articleDetails()->saveMany($collectionOfDetails);
             DB::commit();
-            Flash::overlay('congratulations! your Article has been sent to Verification Department, It will be live sooner');
+            if((!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
+                &&($request->get('isPublished')=='on'))) {
+                Flash::overlay('congratulations! your Article has been sent to Verification Department, It will be live sooner');
+            }
         } catch (\Exception $e) {
             Log::info("error....");
             DB::rollback();
@@ -241,6 +254,7 @@ else{
             $article->title = $request->get('title');
             $article->description = $request->get('description');
             $article->isPublishedByAdmin = ($request->get('isPublishedByAdmin') =='on' ? 1 : 0);
+            $article->isPublished = ($request->get('isPublished') =='on' ? 1 : 0);
             $article->body = $request->get('articleBody0');
             $article->img_name = $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"');
 
@@ -289,7 +303,8 @@ else{
                 }
             }
             DB::commit();
-            if(!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))) {
+            if((!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
+            &&($request->get('isPublished')=='on'))) {
                 Flash::overlay('Your Article has been sent to Verification Department, It will be live sooner');
             }
         } catch (\Exception $e) {
@@ -308,6 +323,17 @@ else{
      */
     public function destroy($id)
     {
-        //
+
+        DB::statement('INSERT INTO articles_hst
+  SELECT *
+  FROM articles WHERE articles.id ='.$id);
+
+        DB::statement('INSERT INTO article_details_hst
+  SELECT *
+  FROM article_details WHERE article_details.article_id ='.$id);
+        $article = Article::findorFail($id);
+        $article->delete();
+        Flash::warning('Article deleted.');
+        return redirect('/home');
     }
 }

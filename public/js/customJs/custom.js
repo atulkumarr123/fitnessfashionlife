@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    $('#alertDiv').not('.alert-important').delay(3000).slideUp(300);
 });
 
 $(document).ready(function(){
@@ -10,3 +10,20 @@ $(document).ready(function(){
         $('a[href="'+this.location.pathname+'"]').parent().addClass('active');
     }
 });
+
+function confirmDel(){
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: true,   closeOnCancel: true },
+        function(isConfirm){   if (isConfirm) {
+            //window.open('/articles/'+$('#articleId').val()+'/delete');
+            window.location = '/articles/'+$('#articleId').val()+'/delete';
+            swal("Deleted!", "Your imaginary file has been deleted.", "success");   }
+        else {     swal("Cancelled", "Your imaginary file is safe :)", "error");   } });
+}

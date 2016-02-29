@@ -48,15 +48,7 @@
                                     <input type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Register
-                                    </button> Or
-                                    <a  class="btn btn-info facebookLogin" href="/auth/facebook" role="button"><i class="fa fa-facebook-square fa-2x"></i> <span style="vertical-align:top;">Login with Facebook</span></a>
-                                </div>
-                            </div>
+                            @include('auth._authButtons', array('signInUp' => 'Register'))
                         </form>
                     </div>
                 </div>

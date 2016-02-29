@@ -16,9 +16,17 @@ class ArticlesControllerForCustomOperations extends ArticlesController
     public function filterArticlesBasedOnCategory($category)
     {  DB::connection()->enableQueryLog();
         if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
-        $articles = Article::where('category', $category)->orderBy('id', 'desc')->get();
+        $articles = Article::where('category', $category)->orderBy('updated_at', 'desc')->get();
+        else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
+            $articlesPublishedByAdminAndDoesntBelongToCurrentUser = Article::where('isPublishedByAdmin', 1)->
+            where('user_id', '!=',Auth::user()->id)->
+            where('category', $category)->orderBy('updated_at', 'desc')->get();
+            $queries = DB::getQueryLog();
+            $articles = Auth::user()->articles()->get();
+            $articles = $articles->merge($articlesPublishedByAdminAndDoesntBelongToCurrentUser);
+        }
         else
-            $articles = Article::where('isPublishedByAdmin', 1)->where('category', $category)->orderBy('id', 'desc')->get();
+            $articles = Article::where('isPublishedByAdmin', 1)->where('category', $category)->orderBy('updated_at', 'desc')->get();
         return view('viewContent.home')->with(compact('articles'));
     }
 
@@ -28,9 +36,16 @@ class ArticlesControllerForCustomOperations extends ArticlesController
 //->where('title', 'LIKE', '%' . $request->get('title') . '%')->paginate(10);
         $searchKey = $request->get('search');
         if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
-            $articles = Article::where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('id', 'desc')->get();
+            $articles = Article::where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('updated_at', 'desc')->get();
+        else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
+            $articlesPublishedByAdminAndDoesntBelongToCurrentUser = Article::where('isPublishedByAdmin', 1)->
+            where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('updated_at', 'desc')->get();
+            $queries = DB::getQueryLog();
+            $articles = Auth::user()->articles()->get();
+            $articles = $articles->merge($articlesPublishedByAdminAndDoesntBelongToCurrentUser);
+        }
         else
-            $articles = Article::where('isPublishedByAdmin', 1)->where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('id', 'desc')->get();
+            $articles = Article::where('isPublishedByAdmin', 1)->where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('updated_at', 'desc')->get();
         $queries = DB::getQueryLog();
         Log::info($queries);
         $search = $request->get('search');

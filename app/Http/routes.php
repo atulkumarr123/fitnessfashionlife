@@ -29,8 +29,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 //// Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 //password reset dummy page (work needs to be done)
 Route::controllers([
     'password' => 'Auth\PasswordController',
@@ -47,6 +47,7 @@ Route::post('articles','ArticlesController@store');
 Route::patch('articles/{id}','ArticlesController@update');
 Route::get('articles/{id}',['middleware'=>'auth:show', 'uses'=>'ArticlesController@show']);
 Route::get('articles/{id}/edit',['middleware'=>'auth:edit', 'uses'=>'ArticlesController@edit']);
+Route::get('articles/{id}/delete',['middleware'=>'auth:delete', 'uses'=>'ArticlesController@destroy']);
 Route::get('articles/filter/{category}', 'ArticlesControllerForCustomOperations@filterArticlesBasedOnCategory');
 
 //Route:resource('articles', 'ArticlesController');

@@ -13,7 +13,7 @@ class AddFacebookRelatedFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('facebook_id');
+            $table->string('social_id');
             $table->string('avatar');
         });
     }
@@ -26,7 +26,7 @@ class AddFacebookRelatedFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
-        $table->dropColumn('facebook_id');
+        $table->dropColumn('social_id');
         $table->dropColumn('avatar');
         });
     }

@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 
 trait RegistersUsers
 {
@@ -36,7 +37,7 @@ trait RegistersUsers
         }
 
         Auth::login($this->create($request->all()));
-
+        Flash::overlay('Welcome to our world <br> Glad to have you as a new member! <i class="fa fa-smile-o"></i>');
         return redirect($this->redirectPath());
     }
 }

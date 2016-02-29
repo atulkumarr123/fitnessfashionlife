@@ -15,7 +15,7 @@
                         <i class="fa fa-user"></i>
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-inverse" >
-                        <li><a href="/articles/create"> Write Blog <i class="fa fa-pencil"></i></a></li>
+                        <li><a href="/articles/create"> Write Blog <i class="fa fa-edit"></i></a></li>
                         <li><a class="myBtn" style="cursor:pointer">Read regularly</a></li>
                         <li role="separator" class="divider"></li>
                         @if(Auth::check())
@@ -96,7 +96,7 @@
                         @endif
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-inverse">
-                        <li><a href="/articles/create"> Write Blog <i class="fa fa-pencil"></i></a></li>
+                        <li><a href="/articles/create"> Write Blog <i class="fa fa-edit"></i></a></li>
                         <li><a class="myBtn" style="cursor:pointer">Read regularly</a></li>
                         <li role="separator" class="divider"></li>
                         @if(Auth::check())

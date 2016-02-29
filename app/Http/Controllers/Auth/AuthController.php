@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\Log;
+use Laracasts\Flash\Flash;
 use Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -73,9 +74,9 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -83,18 +84,18 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
         try {
-            $user = Socialite::driver('facebook')->user();
+            $userFromSocialMedia = Socialite::driver($provider)->user();
         } catch (Exception $e) {
-            return redirect('auth/facebook');
+            return redirect('auth/'.$provider);
         }
 
-        $authUser = $this->findOrCreateUser($user);
+        $authUser = $this->findOrCreateUser($userFromSocialMedia);
 
         Auth::login($authUser, true);
-
+        Flash::success('You are logged in');
         return redirect('/');
     }
 
@@ -104,19 +105,19 @@ class AuthController extends Controller
      * @param $facebookUser
      * @return User
      */
-    private function findOrCreateUser($facebookUser)
+    private function findOrCreateUser($userFromSocialMedia)
     {
         Log::info('findOrCreateUser');
-        $authUser = User::where('facebook_id', $facebookUser->id)->first();
+        $authUser = User::where('social_id', $userFromSocialMedia->id)->first();
         if ($authUser){
             return $authUser;
         }
 
         return User::create([
-            'name' => $facebookUser->name,
-            'email' => $facebookUser->email,
-            'facebook_id' => $facebookUser->id,
-            'avatar' => $facebookUser->avatar
+            'name' => $userFromSocialMedia->name,
+            'email' => $userFromSocialMedia->email,
+            'social_id' => $userFromSocialMedia->id,
+            'avatar' => $userFromSocialMedia->avatar
         ]);
     }
 
