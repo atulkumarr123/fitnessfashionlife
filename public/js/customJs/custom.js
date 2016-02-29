@@ -14,12 +14,12 @@ $(document).ready(function(){
 function confirmDel(){
     swal({
         title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        text: "You will not be able to recover this article!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel plx!",
+        cancelButtonText: "No, cancel plz!",
         closeOnConfirm: true,   closeOnCancel: true },
         function(isConfirm){   if (isConfirm) {
             //window.open('/articles/'+$('#articleId').val()+'/delete');
