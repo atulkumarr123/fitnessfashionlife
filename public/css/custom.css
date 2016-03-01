@@ -1008,7 +1008,7 @@ a.recent-updates-block-anchor:focus {
 }
 
 #main-content-holder {
-    margin-top: 50px;
+    margin-top: 55px;
 }
 
 #main-content-holder, #adplaceholderonside {
@@ -1020,7 +1020,7 @@ a.recent-updates-block-anchor:focus {
 @media screen and (min-width: 768px) {
     #main-content-holder, #adplaceholderonside {
         border-radius: 5px;
-        margin-top: 50px;
+        margin-top: 55px;
         border: 1px solid white;
     }
 }

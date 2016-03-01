@@ -23,7 +23,7 @@
                         @endif
                         @if(Auth::guest())
                             <li><a href="/auth/login">Sign In <i class="fa fa-sign-in"></i></a></li>
-                            <li><a href="/auth/register">Sign Up <i class="fa fa-collapse-up"></i></a></li>
+                            <li><a href="/auth/register">Sign Up <i class="fa fa-chevron-up"></i></a></li>
                         @endif
                     </ul>
                 </li>
