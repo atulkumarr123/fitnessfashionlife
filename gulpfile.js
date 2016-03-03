@@ -11,31 +11,33 @@ var elixir = require('laravel-elixir');
  |
  */
 
-//elixir(function (mix) {
-//    mix.sass('app.scss')
-//        .publish('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/jquery.min.js',
-//        'resources/assets/js/jquery.min.js')
-//        .publish('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/bootstrap.min.js',
-//        'resources/assets/js/bootstrap.min.js')
-//        .scripts([
-//            'jquery.min.js',
-//            'bootstrap.min.js'
-//        ], 'public/js/all.js')
-//});
-
 elixir(function (mix) {
-    mix.sass('app.scss','public/css/fromGulp')
-        .sass('carouselModeToListArticles.scss','public/css/fromGulp')
-        .copy('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/jquery.min.js',
-        'resources/assets/js/jquery.min.js')
-        .copy('vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/bootstrap.min.js',
-        'resources/assets/js/bootstrap.min.js')
-        .scripts([
-            'jquery.min.js',
-        ], 'public/js/jquery.min.js')
-        .scripts([
-            'bootstrap.min.js',
-        ], 'public/js/bootstrap.min.js');
-
+    mix/*.styles([
+     'public/css/fromGulp/app.css',
+     'public/css/font-awesome.css',
+     'public/css/select2.min.css',
+     'public/css/sweetalert.css',
+     'public/css/subscription.css',
+     'public/css/custom.css',
+     'public/css/socialMediaFontsFamily.css',
+     'public/css/fromGulp/carouselModeToListArticles.css',
+     'public/css/searchBar.css',
+     'public/css/authPages.css'
+     ],'public/css/atulyaperspectives.css','public/css'
+     ) .scripts([
+     'public/js/jquery.min.js',
+     'public/js/jquery-ui.min.js',
+     'public/js/bootstrap.min.js',
+     'public/js/select2.min.js',
+     'public/js/sweetalert.min.js',
+     'public/js/customJs/socialIcons.js',
+     'public/js/customJs/searchBar.js',
+     'public/js/customJs/custom.js',
+     'public/js/customJs/subscription.js',
+     ],'public/js/atulyaPerspectives.js','public/js'
+     )*/.scripts([
+         'public/js/customJs/createNewEditorScript.js',
+        ],'public/js/createNewEditorScript.min.js','public/js'
+    );
 });
 

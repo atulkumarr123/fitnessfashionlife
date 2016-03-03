@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddCategoryColumnToArticleTable' => $baseDir . '/database/migrations/2016_02_07_233839_add_category_column_to_article_table.php',
+    'AddCategoryIdColumnToArticleTable' => $baseDir . '/database/migrations/2016_03_01_154036_add_category_id_column_to_article_table.php',
     'AddFacebookRelatedFieldsToUsersTable' => $baseDir . '/database/migrations/2016_02_21_133107_add_facebook_related_fields_to_users_table.php',
     'AddHeadingToCreateArticledetailsTable' => $baseDir . '/database/migrations/2016_01_18_064329_add_heading_to_create_articledetails_table.php',
     'AddImageNameToArticleTable' => $baseDir . '/database/migrations/2016_02_05_173602_add_image_name_to_article_table.php',

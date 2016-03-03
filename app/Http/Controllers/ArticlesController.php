@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\ArticleDetail;
+use App\Category;
 use App\Http\Requests;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Helpers\ArticlesControllerHelper;
 use App\Tag;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,7 +15,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
+
+use Illuminate\Support\Facades\Storage;
 use Laracasts\Flash\Flash;
+
 
 class ArticlesController extends Controller
 {
@@ -26,7 +32,7 @@ class ArticlesController extends Controller
     {
 //        Session::forget('isSubscribed');
         if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
-        $articles = Article::orderBy('updated_at','desc')->get();
+            $articles = Article::orderBy('updated_at','desc')->get();
         else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
             DB::connection()->enableQueryLog();
             $articlesPublishedByAdminAndDoesntBelongToCurrentUser = Article::where('isPublishedByAdmin', 1)->
@@ -37,8 +43,8 @@ class ArticlesController extends Controller
 //            dd($articles);
 
         }
-            else
-        $articles = Article::where('isPublishedByAdmin', 1)->orderBy('updated_at', 'desc')->get();
+        else
+            $articles = Article::where('isPublishedByAdmin', 1)->orderBy('updated_at', 'desc')->get();
         return view('viewContent.home')->with('articles', $articles);
 //        return view('miscellaneous.subscribeForm')->with('articles', $articles);
     }
@@ -54,7 +60,9 @@ class ArticlesController extends Controller
 //        return view('newarticle');
         $tags = Tag::lists('name','id');
         $selectedTags = emptyArray();
-        return view('createContent.newarticle')->with(compact('tags','selectedTags'));
+        $categories = [''=>'']+Category::lists('name','id')->all();
+        $selectedCategory = emptyArray();
+        return view('createContent.newarticle')->with(compact('tags','selectedTags','categories','selectedCategory'));
 //                                    ->with('selectedTags');
     }
 
@@ -64,15 +72,18 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(ArticleRequest $request)
     {
 //dd(Auth::user());
         DB::beginTransaction();
         try {
+            $imageName = ArticlesControllerHelper::processCoverImage($request);
             $article = Article::create(['title' => $request->get('title'),
                 'description' => $request->get('description'),
+                'category_id' => $request->get('category'),
                 'body' => $request->get('articleBody0'),
-                'img_name' => $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"'),
+                'img_name' => $imageName,
                 'user_id' => Auth::user()->id]);
 
             $tagsFromRequest = $request->input('tags');
@@ -91,7 +102,7 @@ class ArticlesController extends Controller
             $collectionOfDetails = new Collection();
 //            dd($numberOfTextAreas);
             for ($counter = 0; $counter < $numberOfTextAreas; $counter++){
-                $imageName = $this->get_string_between($request->get('articleBody'.$counter), 'src="/images/', '"');
+                $imageName = ArticlesControllerHelper::get_string_between($request->get('articleBody'.$counter), 'src="/images/', '"');
 //            $articleDetails = new ArticleDetail(['body' => $request->get('articleBody'.$counter),
 //                'img_name' => $imageName]);
 //                $collectionOfDetails->push($articleDetails);
@@ -104,7 +115,7 @@ class ArticlesController extends Controller
                     ])
                 );
 
-        }
+            }
 //            dd($article);
             $article->articleDetails()->saveMany($collectionOfDetails);
             DB::commit();
@@ -120,14 +131,7 @@ class ArticlesController extends Controller
         return redirect('/articles');
     }
 
-public function get_string_between($string, $start, $end){
-        $string = ' ' . $string;
-        $ini = strpos($string, $start);
-        if ($ini == 0) return '';
-        $ini += strlen($start);
-        $len = strpos($string, $end, $ini) - $ini;
-        return substr($string, $ini, $len);
-    }
+
 
 //    public  function sampling($chars, $size, $combinations = array()) {
 //        # if it's the first iteration, the first set
@@ -205,9 +209,9 @@ public function get_string_between($string, $start, $end){
             Log::info($queries);
 //            Log::info($similarArticles);
         }
-else{
-    $similarArticles = emptyArray();
-}
+        else{
+            $similarArticles = emptyArray();
+        }
         $userOfThisArticle = User::where('id', $article->user_id)->get()->first();
 //        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
 //        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
@@ -232,8 +236,10 @@ else{
         $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('id')->toArray();
         $description = $article->description;
+        $categories = [''=>'']+Category::lists('name','id')->all();
+        $selectedCategory = $article->category_id;
         return view('editContent.editArticle')->
-            with(compact('articleDetails', 'title','description','selectedTags','tags','article'));
+        with(compact('articleDetails', 'title','description','selectedTags','tags','article','categories','selectedCategory'));
 //            ->with('selectedTags',$selectedTags->toArray());
     }
 
@@ -246,17 +252,18 @@ else{
      */
     public function update(ArticleRequest $request, $id)
     {
-//        dd($isPublishedByAdmin);
 //        Log::info("update(ArticleRequest $request, $id)");
         DB::beginTransaction();
         try {
+            $imageName = ArticlesControllerHelper::processCoverImage($request);
             $article = Article::findorFail($id);
             $article->title = $request->get('title');
             $article->description = $request->get('description');
             $article->isPublishedByAdmin = ($request->get('isPublishedByAdmin') =='on' ? 1 : 0);
             $article->isPublished = ($request->get('isPublished') =='on' ? 1 : 0);
+            $article->category_id = $request->get('category');
             $article->body = $request->get('articleBody0');
-            $article->img_name = $this->get_string_between($request->get('articleBody0'), 'src="/images/', '"');
+            $article->img_name = $imageName;
 
             $tagsFromRequest = $request->input('tags');
             Log::info("hereeee");
@@ -276,9 +283,9 @@ else{
 //            Log::info("static 6...".$request->get('articleBody6'));
             for ($counter = 0; $counter < $numberOfTextAreas; $counter++){
 //                Log::info("fffff".$request->get('articleBody'.$counter));
-                $imageName = $this->get_string_between($request->get('articleBody'.$counter), 'src="/images/', '"');
-                 $articleDetailId = null;
-                 $articleDetail = new ArticleDetail();
+                $imageName = ArticlesControllerHelper::get_string_between($request->get('articleBody'.$counter), 'src="/images/', '"');
+                $articleDetailId = null;
+                $articleDetail = new ArticleDetail();
                 if(count($request->get('articleDetailId'))>$counter){
                     $articleDetailId = $request->get('articleDetailId')[$counter];
                     $articleDetail = ArticleDetail::find($articleDetailId);
@@ -304,7 +311,7 @@ else{
             }
             DB::commit();
             if((!(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
-            &&($request->get('isPublished')=='on'))) {
+                &&($request->get('isPublished')=='on'))) {
                 Flash::overlay('Your Article has been sent to Verification Department, It will be live sooner');
             }
         } catch (\Exception $e) {

@@ -1,23 +1,18 @@
 @extends('commons.layout')
-
 <script type="text/javascript"
         src="/ckeditor/ckeditor.js"></script>
 <script type="text/javascript"
         src="/ckfinder/ckfinder.js"></script>
 <script type="text/javascript"
-        src="/js/customJs/createNewEditorScript.js">
+        src="/js/createNewEditorScript.min.js">
 </script>
 
 @section('createArticleForm')
     <div class="col-md-9" id="main-content-holder">
-        <div class="row">
-            <div class="col-md-12" id="google-ad-1">
-                <h4>Google Ad</h4>
-                This is a google ad template.</p>
-            </div>
-        </div>
+        @include("ads._ad1")
         <form enctype="multipart/form-data" action="/articles" method="post">
         <div class="row">
+            @include("commons._errors")
             <div class="col-md-12" id="outerDiv">
                     {{csrf_field()}}
                     <input type="hidden" name="numberOfTextAreas" id="numberOfTextAreas" value="1" class="form-control">
@@ -43,6 +38,10 @@
                             });
                         </script>
                     </div>
+                <div class="form-group">
+                    {!! Form::label('Select Cover of this Article:') !!}
+                    {!! Form::file('image', null) !!}
+                </div>
             </div>
         </div>
             @include("tagging._tagsAndButtonsContainer")

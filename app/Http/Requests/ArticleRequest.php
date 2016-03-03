@@ -25,10 +25,21 @@ class ArticleRequest extends Request
     {
 
         return [
-//          'description'=>'required',
-//            'image'=>'required',
-//          'articleBody1'=>'required'
+            'title'=>'required',
+          'description'=>'required',
+          'articleBody0'=>'required',
+            'articleBody0'=>'required',
+            'tags'=>'required',
         ];
         Log::info("exiting from request");
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required',
+            'description.required' => 'Description is required',
+            'articleBody0.required' => 'Article Body is required',
+            'tags.required' => 'Select atleast one tag',
+        ];
     }
 }

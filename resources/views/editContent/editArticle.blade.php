@@ -4,18 +4,17 @@
 <script type="text/javascript"
         src="/ckfinder/ckfinder.js"></script>
 <script type="text/javascript"
-        src="/js/customJs/createNewEditorScript.js">
+        src="/js/createNewEditorScript.min.js">
 </script>
 @section('createArticleForm')
     <div class="col-md-9" id="main-content-holder">
+        @include("ads._ad1")
+        {!! Form::open(['method'=>'patch','files' => true,'action'=>['ArticlesController@update',$article->id],
+        'enctype'=>'multipart/form-data"',
+        'novalidate' => 'novalidate',
+        'files' => true])!!}
         <div class="row">
-            <div class="col-md-12" id="google-ad-1">
-                <h4>Google Ad</h4>
-                This is a google ad template.</p>
-            </div>
-        </div>
-        {!! Form::open(['method'=>'patch','class','','action'=>['ArticlesController@update',$article->id],'enctype'=>'multipart/form-data"'])!!}
-        <div class="row">
+            @include("commons._errors")
             <div class="col-md-12" id="outerDiv">
                 {{--<form enctype="multipart/form-data" action="/articles/{{$articleDetails->get(0)->article_id}}" method="put">--}}
                 <input type="hidden" name="numberOfTextAreas" id="numberOfTextAreas" value="1" class="form-control">
@@ -51,6 +50,11 @@
                     </div>
                     <?php $index = $index+1 ?>
                 @endforeach
+                <div class="form-group">
+                    {!! Form::label('Select Cover of this Article:') !!}
+                    {!! Form::file('image', null!!}
+                    {{--<input type="file" name="image" id="image" required/>--}}
+                </div>
                 @if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
                     @if($article->isPublishedByAdmin==0)
                     <div class="form-group">

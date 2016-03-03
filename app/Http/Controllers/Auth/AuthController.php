@@ -96,7 +96,7 @@ class AuthController extends Controller
 
         Auth::login($authUser, true);
         Flash::success('You are logged in');
-        return redirect('/');
+        return redirect()->intended($this->redirectPath());
     }
 
     /**

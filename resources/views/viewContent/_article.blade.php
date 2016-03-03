@@ -3,7 +3,8 @@
         <div class="row">
             @include('socialMedia._socialIcons')
             <div class="col-md-12 article-design-on-article-page">
-                    <article class="media">
+                <h3 class="article-title-class">{{$article->description}}</h3>
+                    <article class="media" style="margin-top: 0px;">
                         <p class="article-details-body-class">
                             {!!$article->body!!}
                         </p>

@@ -22,7 +22,7 @@ class CreateArticlesHstTable extends Migration
             $table->string('img_name')->nullable();
             $table->string('category')->nullable();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('isPublishedByAdmin')->default(false);
         });
     }

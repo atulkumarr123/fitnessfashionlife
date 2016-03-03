@@ -5,7 +5,7 @@
     <title>Atulya Perspectives</title>
     <link rel="stylesheet" href="/css/fromGulp/app.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
-    <link rel="stylesheet" href="/select2-4.0.1/css/select2.min.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="/css/sweetalert.css">
     <link rel="stylesheet" href="/css/subscription.css">
     <link rel="stylesheet" href="/css/custom.css">
@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/css/fromGulp/carouselModeToListArticles.css">
     <link rel="stylesheet" href="/css/searchBar.css">
     <link rel="stylesheet" href="/css/authPages.css">
+    {{--<link rel="stylesheet" href="/css/atulyaperspectives.css">--}}
+    {{--<script type="text/javascript" src="/js/atulyaPerspectives.js"></script>--}}
 
 
     <script type="text/javascript"
@@ -25,7 +27,7 @@
             src="/js/bootstrap.min.js">
     </script>
     <script type="text/javascript"
-            src="/select2-4.0.1/js/select2.min.js">
+            src="/js/select2.min.js">
     </script>
     <script
             type="text/javascript"
