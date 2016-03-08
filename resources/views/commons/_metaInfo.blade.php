@@ -9,8 +9,8 @@
 <meta property="fb:app_id"        content="572820202894280"/>
 
 {{--Twitter--}}
-{{--<meta property="twitter:url"           content="@yield('url')" />--}}
-{{--<meta property="twitter:title"         content="@yield('title')"/>--}}
-{{--<meta property="twitter:description"   content="@yield('description')"/>--}}
-{{--<meta property="twitter:card" content="AtulyaPerspectives"/>--}}
-{{--<meta property="twitter:image"         content="@yield('image')"/>--}}
+<meta property="twitter:url"           content="@yield('url')" />
+<meta property="twitter:title"         content="@yield('title')"/>
+<meta property="twitter:description"   content="@yield('description')"/>
+<meta property="twitter:card" content="AtulyaPerspectives"/>
+<meta property="twitter:image"         content="@yield('image')"/>
