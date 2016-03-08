@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    @include("commons._metaInfo")
     <title>Atulya Perspectives</title>
     <link rel="stylesheet" href="/css/fromGulp/app.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="/css/authPages.css">
     {{--<link rel="stylesheet" href="/css/atulyaperspectives.css">--}}
     {{--<script type="text/javascript" src="/js/atulyaPerspectives.js"></script>--}}
-
 
     <script type="text/javascript"
             src="/js/jquery.min.js"></script>

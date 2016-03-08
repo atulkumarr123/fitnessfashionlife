@@ -31,7 +31,6 @@ use CKSource\CKFinder\Filesystem\Folder\WorkingFolder;
 use CKSource\CKFinder\Thumbnail\ThumbnailRepository;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
-
 class FileUpload extends CommandAbstract
 {
     protected $requestMethod = Request::METHOD_POST;
@@ -91,6 +90,7 @@ class FileUpload extends CommandAbstract
         }
 
         $fileName = $uploadedFile->getFilename();
+        $fileName = str_replace(' ', '_',$fileName);
 
         if (!$uploadedFile->isAllowedHtmlFile() && $uploadedFile->containsHtml()) {
             throw new InvalidUploadException('HTML detected in disallowed file type', Error::UPLOADED_WRONG_HTML_FILE);

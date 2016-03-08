@@ -201,7 +201,9 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'SMS' => SimpleSoftwareIO\SMS\Facades\SMS::class
+        'SMS'       => SimpleSoftwareIO\SMS\Facades\SMS::class,
+        'Helper'    => App\Http\Helpers\ArticlesControllerHelper::class
+
     ],
 
 ];

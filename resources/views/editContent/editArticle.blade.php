@@ -52,7 +52,7 @@
                 @endforeach
                 <div class="form-group">
                     {!! Form::label('Select Cover of this Article:') !!}
-                    {!! Form::file('image', null!!}
+                    {!! Form::file('image', null)!!}
                     {{--<input type="file" name="image" id="image" required/>--}}
                 </div>
                 @if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))

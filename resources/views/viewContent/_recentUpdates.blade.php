@@ -12,7 +12,7 @@
                             @if(property_exists ($article,'articleDetails'))
                             <img class="media-object" src="/images/{{$article->articleDetails->get(0)->img_name}}">
                             @else
-                                <img class="media-object" src="/images/{{$article->title.'/'.$article->img_name}}">
+                                <img class="media-object" src="@include("commons._coverImagePath")">
                            @endif
                             <p class="article-body-class">
                             <h5> {{substr($article->description,0,75)}}{{'...'}}</h5>

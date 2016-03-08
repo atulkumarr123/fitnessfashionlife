@@ -16,7 +16,7 @@
                     <h4 class="article-title-class">{{$oneArticle->title}}</h4>
                     {{--<h6 class="pull-right" style="margin:0px">{{Carbon\Carbon::parse($oneArticle->updated_at)->toFormattedDateString()}}</h6>--}}
                     <h6 class="pull-right" style="margin:0px">{{Carbon\Carbon::parse($oneArticle->updated_at)->toFormattedDateString().' By '}}<span style="font-weight: 600;">{{$article->user->name}}</span></h6>
-                    <img class="media-object_forRelatedArticles" src="/images/{{$oneArticle->title.'/'.$oneArticle->img_name}}">
+                    <img class="media-object_forRelatedArticles" src="@include("commons._coverImagePath")">
                     <p class="article-body-class">
                     <h5> {{substr($oneArticle->description,0,75)}}{{'...'}}</h5>
                     </p>
