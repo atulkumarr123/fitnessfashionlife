@@ -75,7 +75,7 @@ and (max-width: 768px) {
         width:120px;
     }
 }
-@media only screen and (min-width: 298px)
+@media only screen and (min-width: 250px)
 and (max-width: 374px) {
     #search{
         width:90px;
@@ -84,6 +84,7 @@ and (max-width: 374px) {
 
 .navbar-brand {
     padding: 15px 5px;
+    display: flex;
 }
 /*.nav > li > a {*/
     /*padding: 10px 10px;*/
