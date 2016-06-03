@@ -18,17 +18,17 @@
                     <input type="hidden" name="numberOfTextAreas" id="numberOfTextAreas" value="1" class="form-control">
                     <div class="form-group">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title" class="form-control" value="" required>
+                        <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text" name="description" id="description" class="form-control" value="" required>
+                        <input type="text" name="description" id="description" class="form-control" value="{{old('description')}}" required>
                     </div>
                     <div class="form-group classToFetchPlaceToAddCk" id="editor">
                         <label for="articleBody0">
                             Write your Article:</label>
-                        <textarea id="articleBody0" name="articleBody0" class="form-control" required>
-
+                        <textarea id="articleBody0" name="articleBody0" value="{{old('articleBody0')}}" class="form-control" required>
+                        {!!old('articleBody0')!!}
                         </textarea>
                         <script type="text/javascript">
                             CKEDITOR.disableAutoInline = true;

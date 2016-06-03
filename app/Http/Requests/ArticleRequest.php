@@ -25,7 +25,7 @@ class ArticleRequest extends Request
     {
 
         return [
-            'title'=>'required',
+            'title' => 'required|min:7',
           'description'=>'required',
           'articleBody0'=>'required',
             'articleBody0'=>'required',

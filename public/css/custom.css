@@ -259,18 +259,18 @@ article p{
 }
 
 
-.blink_meForTagLine {
-    animation: blinker 7s linear infinite;
-    margin:0px;
-}
+/*.blink_meForTagLine {*/
+    /*animation: blinker 7s linear infinite;*/
+    /*margin:0px;*/
+/*}*/
 
-.blink_meForTagLine:hover
-{
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    animation-play-state: paused;
-}
+/*.blink_meForTagLine:hover*/
+/*{*/
+    /*-webkit-animation-play-state: paused;*/
+    /*-moz-animation-play-state: paused;*/
+    /*-o-animation-play-state: paused;*/
+    /*animation-play-state: paused;*/
+/*}*/
 @-o-keyframes blinker{
     0%  {}
     40% {}
@@ -949,6 +949,7 @@ body{
         border-top-style: none;
         border-top-width: 0px;
         border-top-color: transparent;
+        padding-bottom: 15px;
         padding-bottom: 15px;
         color: black;
         overflow: hidden

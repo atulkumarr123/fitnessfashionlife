@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Inspire::class,
+//        \App\Console\Commands\Inspire::class,
     ];
 
     /**
@@ -24,7 +25,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+//        $schedule->command('inspire')
+//                 ->hourly();
+        $schedule->call(function () {
+//        $polls = Poll::where('status', 'opened')->
+//        orderBy('created_at', 'desc')->get();
+            Log::info("Yes crons are working");
+        })->everyMinute();
     }
 }

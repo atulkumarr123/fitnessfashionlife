@@ -29,7 +29,7 @@ class AddCategoryIdColumnToArticleTable extends Migration
      */
     public function down()
     {
-        Schema::table('articles', function ($table) {
+        Schema::table('articles', function ($table) {//have to work on this foreign keys should also be dropped before dropping the actual column take the reference from nationpolls code (Model Name: AddGeoLocsIdToPollsTable)
             $table->dropColumn('category_id');
         });
         Schema::table('articles_hst', function ($table) {
