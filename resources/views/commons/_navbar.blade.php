@@ -32,8 +32,8 @@
                 <li><a href="/articles/filter/2">Fashion</a></li>
                 {{--<li><a href="/articles/filter/life">Life</a></li>--}}
                 <li><a href="/articles/filter/3">Relationships</a></li>
-                <li><a href="/articles/filter/4">Weird Facts</a></li>
-                <li><a href="/articles/filter/5">Media Stories</a></li>
+                <li><a href="/articles/filter/4">Cinema</a></li>
+                {{--<li><a href="/articles/filter/5">Media Stories</a></li>--}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

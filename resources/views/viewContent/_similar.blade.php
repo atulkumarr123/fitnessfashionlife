@@ -23,8 +23,21 @@
                 </article>
                 </a>
             </div>
-
         </div>
             @endforeach
     @endforeach
+    <div class="row">
+        <div class="col-md-12 article-design-on-article-page">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- NationPollsAd1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1585513772912319"
+         data-ad-slot="9014494184"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+        </div>
+    </div>
 </div>
