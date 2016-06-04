@@ -12,7 +12,7 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function (mix) {
-    mix/*.styles([
+    mix.styles([
      'public/css/fromGulp/app.css',
      'public/css/font-awesome.css',
      'public/css/select2.min.css',
@@ -35,7 +35,7 @@ elixir(function (mix) {
      'public/js/customJs/custom.js',
      'public/js/customJs/subscription.js',
      ],'public/js/atulyaPerspectives.js','public/js'
-     )*/.scripts([
+     ).scripts([
          'public/js/customJs/createNewEditorScript.js',
         ],'public/js/createNewEditorScript.min.js','public/js'
     );

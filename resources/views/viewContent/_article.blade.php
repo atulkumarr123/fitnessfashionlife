@@ -4,9 +4,9 @@
 @section('description'){{$article->description}}@stop
 
 <div class="col-md-9" id="main-content-holder">
-    @include("ads._ad1")
+{{--    @include("ads._ad1")--}}
         <div class="row">
-            @include('socialMedia._socialIcons')
+            @if($article->isPublishedByAdmin==1)@include('socialMedia._socialIcons')@endif
             <div class="col-md-12 article-design-on-article-page">
                 <h3 class="article-title-class">{{$article->description}}</h3>
                     <article class="media" style="margin-top: 0px;">
@@ -22,7 +22,7 @@
             @include('commons._editAndDelButton')
                 @endif
             @endif
-            @include('socialMedia._socialIcons')
+            @if($article->isPublishedByAdmin==1)@include('socialMedia._socialIcons')@endif
             @include('socialMedia._fbCommentSection')
 </div>
 </div>

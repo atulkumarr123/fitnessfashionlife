@@ -1,5 +1,5 @@
 <div class="col-md-12" id="main-content-holder">
-    @include("ads._ad1")
+{{--    @include("ads._ad1")--}}
     @foreach ($articles->chunk(3) as $chunk)
         <div class="row">
             @foreach ($chunk as $article)
