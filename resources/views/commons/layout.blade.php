@@ -43,6 +43,7 @@
 {{--        @include('ads._adplaceholder')--}}
         @include('miscellaneous._subscribeForm')
         </div>
+    <div class="push"></div>
 </div>
     @include('commons._footer')
 </body>

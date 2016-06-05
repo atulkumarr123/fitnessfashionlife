@@ -1,3 +1,6 @@
+.push {
+    height: 200px; /* '.push' must be the same height as 'footer' */
+}
 .caret {
     border-top: 4px solid;
 }
