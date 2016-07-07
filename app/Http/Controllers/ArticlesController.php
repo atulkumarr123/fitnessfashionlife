@@ -175,10 +175,81 @@ class ArticlesController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title)
+    {
+        $title = ArticlesControllerHelper::deProcessTheDirName($title);
+//        $article = Article::findorFail($id);
+        $article = $this->getTheArticleForThisTitle($title);
+        if($article==null){return redirect('/');}
+        $selectedTags = $article->tags()->lists('name');
+        $similarArticles = $this->similarArticles($article->id);
+        DB::connection()->enableQueryLog();
+//        $similarArticles = array();
+//        if(!$selectedTags->isEmpty()) {
+////            $reducingArrayOfTags = $selectedTags;
+//            $removedBrackets = substr($selectedTags, 1, -1);
+//            $numberOfIds = count($selectedTags);
+//            for ($counter = 0; $counter < $numberOfTagsInCurrentArticle ; $counter++) {
+//
+//                $similarArticlesSubSet = DB::select
+//                (
+//                    'select articles.* from
+//            `articles`, tags,article_tag where
+//            article_tag.article_id = articles.id and
+//            article_tag.tag_id = tags.id and
+//            tags.name Not In (select name from tags where name NOT IN (' . $removedBrackets . ')) and
+//            articles.id<>' . $id . ' and
+//            articles.isPublishedByAdmin=1
+//            group by articles.id
+//            HAVING count(articles.id)='.$numberOfIds.'');
+//                $numberOfIds = $numberOfIds-1;
+//                if(count($similarArticlesSubSet)>0){
+//                    array_push($similarArticles,$similarArticlesSubSet);
+//                }
+//                $queries = DB::getQueryLog();
+//            }
+//            Log::info($queries);
+////            Log::info($similarArticles);
+//        }
+//        else{
+//            $similarArticles = emptyArray();
+//        }
+        $userOfThisArticle = User::where('id', $article->user_id)->get()->first();
+//        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
+//        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
+        return view('viewContent.article')->with(compact('article','selectedTags','similarArticles','userOfThisArticle'));
+    }
+    public function getTheArticleForThisTitle($title)
+    {
+        DB::connection()->enableQueryLog();
+        if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin')) {
+            $article = Article::where('title', 'LIKE', $title)->get()->first();
+        }
+        else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
+            $article = Article::where('title', 'LIKE', $title)->
+            where('user_id', Auth::user()->id)
+                ->orWhere(function($query) use ($title)
+                {
+                    $query->where('isPublishedByAdmin', '=', 1)
+                        ->where('title', 'LIKE', $title);
+                })
+                ->get()->first();
+            $queries = DB::getQueryLog();
+            Log::info($queries);
+        }
+        else{
+            $article = Article::where('title', 'LIKE', $title)->
+            where('isPublishedByAdmin', 1)
+                ->get()->first();
+        }
+        if($article==null){
+            Flash::warning('oops! No such article exists.');
+        }
+        return $article;
+    }
+    public function similarArticles($id)
     {
         $article = Article::findorFail($id);
-        $tags = Tag::lists('name','id');
         $selectedTags = $article->tags()->lists('name');
         $numberOfTagsInCurrentArticle = count($selectedTags);
         DB::connection()->enableQueryLog();
@@ -212,12 +283,18 @@ class ArticlesController extends Controller
         else{
             $similarArticles = emptyArray();
         }
-        $userOfThisArticle = User::where('id', $article->user_id)->get()->first();
-//        $articleDetails = ArticleDetail::where('article_id', $id)->orderBy('counter', 'asc')->paginate(1);
-//        return view('viewContent.carouselModeToListArticles')->with(compact('articleDetails','selectedTags'));
-        return view('viewContent.article')->with(compact('article','selectedTags','similarArticles','userOfThisArticle'));
+        return $this->getArticlesInTheFormOfObjects($similarArticles); //since QueryBuilder doesn't give nested objects it means they don't give objects eagerly loaded which we will require on view(blade)
     }
-
+    public function getArticlesInTheFormOfObjects($similarArticles){
+        $similarArticlesObjects = array();
+        if($similarArticles!=null){
+            foreach ($similarArticles[0] as $similarArticle)
+            {
+                $pollObject = $this->getTheArticleForThisTitle($similarArticle->title);
+                array_push($similarArticlesObjects, $pollObject);
+            }}
+        return $similarArticlesObjects;
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -255,19 +332,18 @@ class ArticlesController extends Controller
 //        Log::info("update(ArticleRequest $request, $id)");
         DB::beginTransaction();
         try {
-            $imageName = ArticlesControllerHelper::processCoverImage($request);
             $article = Article::findorFail($id);
+            if($request->file('image')!=null) {
+                $imageName = ArticlesControllerHelper::processCoverImage($request);
+                $article->img_name = $imageName;
+            }
             $article->title = $request->get('title');
             $article->description = $request->get('description');
             $article->isPublishedByAdmin = ($request->get('isPublishedByAdmin') =='on' ? 1 : 0);
             $article->isPublished = ($request->get('isPublished') =='on' ? 1 : 0);
             $article->category_id = $request->get('category');
             $article->body = $request->get('articleBody0');
-            $article->img_name = $imageName;
-
             $tagsFromRequest = $request->input('tags');
-            Log::info("hereeee");
-            Log::info($tagsFromRequest);
             for ($counter = 0; $counter < count($tagsFromRequest); $counter++) {
                 if (!Tag::lists('id')->contains($tagsFromRequest[$counter])) {
                     $tag = Tag::create(['name' => $tagsFromRequest[$counter]]);

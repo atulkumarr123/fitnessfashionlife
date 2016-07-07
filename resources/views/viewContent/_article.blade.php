@@ -23,6 +23,7 @@
                 @endif
             @endif
             @if($article->isPublishedByAdmin==1)@include('socialMedia._socialIcons')@endif
+            @include('ads._adForArticleView')
             @include('socialMedia._fbCommentSection')
 </div>
 </div>

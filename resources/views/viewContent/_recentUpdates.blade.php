@@ -4,7 +4,8 @@
         <div class="row">
             @foreach ($chunk as $article)
                 <div class="col-md-4 article-design-on-home-page">
-                    <a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">
+                    {{--<a href="{{url("/articles",$article->id)}}" class="recent-updates-block-anchor">--}}
+                        <a href="{{url("/articles",Helper::processTheDirName($article->title))}}" class="recent-updates-block-anchor">
                         <article class="media">
                             <h4 class="article-title-class">{{$article->title}}</h4>
                             {{--<h4 class="article-title-class"><span style="color: red">sdkkfg</span>sdfg</h4>--}}

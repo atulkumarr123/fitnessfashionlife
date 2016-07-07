@@ -1,0 +1,1 @@
+Aulya Perspectives is general Blog Site.

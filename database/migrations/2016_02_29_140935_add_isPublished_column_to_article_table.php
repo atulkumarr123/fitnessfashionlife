@@ -28,10 +28,10 @@ class AddIsPublishedColumnToArticleTable extends Migration
     public function down()
     {
         Schema::table('articles', function ($table) {
-            Schema::drop('isPublished');
+            $table->dropColumn('isPublished');
         });
         Schema::table('articles_hst', function ($table) {
-            Schema::drop('isPublished');
+            $table->dropColumn('isPublished');
         });
     }
 }

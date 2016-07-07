@@ -24,6 +24,8 @@ class AddIsPublishedByAdminColumnToArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('isPublishedByAdmin');
+        Schema::table('articles', function ($table) {
+            $table->dropColumn('isPublishedByAdmin');
+        });
     }
 }

@@ -1,4 +1,12 @@
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+{{--General Meta Tags--}}
+<title>@yield('metaTitleForSeo')</title>
+<META name="description" content="AulyaPerspectives is general Blog Site, Here you will Generally find perspectives written on different aspects of Life, Universe and Science">
+<META name="keywords" content="atulkumar,life,universe,aliens,science,blog,opinions,social-issues,media,people-choice,celebrities,science-fiction,novels,novel">
+<meta name="robots" content="index, follow">
+<meta name="content-language" content="en">
+<meta name="copyright" content="AtulyaPerspectives">
+<meta name="revisit-after" content="15 days">
 {{--Facebook--}}
 <meta property="og:image"         content="@yield('image')"/>
 <meta property="og:url"           content="@yield('url')" />
