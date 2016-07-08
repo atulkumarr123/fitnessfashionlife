@@ -2,7 +2,7 @@
 @section('aboutUs')
     <div class="col-md-12  pull-left">
         <div class="row miscDiv social-icons icon-circle icon-zoom">
-            <p>Wanna work with us in Short film making (may be as an actor/writer/blogger or anything else)??<br />
+            <p>Wanna work with us in Short films (may be as an actor/writer/blogger or anything else)??<br />
                 Or<br />
                 you may wanna write your incredible perspectives on this website to show or convey your message to the world...??<br />
                 All right,<br />

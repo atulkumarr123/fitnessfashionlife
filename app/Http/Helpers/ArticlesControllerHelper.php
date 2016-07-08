@@ -33,7 +33,7 @@ class ArticlesControllerHelper extends Controller{
 //        return $underScoredImageName;
 //    }
     public static function deUnderScoreIt($string){
-        $deHyphenized = str_replace('_', ' ',$string);
+        $deHyphenized = str_replace('-', ' ',$string);
         return $deHyphenized;
     }
     public static function replaceTiltSymbolWIthQsnMarkIt($string){
@@ -52,7 +52,7 @@ class ArticlesControllerHelper extends Controller{
     }
 
     public static function underScoreIt($string){
-        $hyphenizedd = str_replace(' ', '_',$string);
+        $hyphenizedd = str_replace(' ', '-',$string);
         return $hyphenizedd;
     }
     public static function replaceQuestionMark($string){
