@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -30,11 +30,11 @@ class ArticlesControllerForCustomOperations extends ArticlesController
         return view('viewContent.home')->with(compact('articles'));
     }
 
-    public function search(ArticleRequest $request)
+    public function search(SearchRequest $request)
     {
-//        $articles = DB::table('articles')
-//->where('title', 'LIKE', '%' . $request->get('title') . '%')->paginate(10);
+        Log::info("HIIII");
         $searchKey = $request->get('search');
+
         if(Auth::check()&&Auth::user()->roles()->lists('role')->contains('admin'))
             $articles = Article::where('title', 'LIKE', '%'.$searchKey.'%')->orderBy('updated_at', 'desc')->get();
         else if(Auth::check()&&!(Auth::user()->roles()->lists('role')->contains('admin'))){
