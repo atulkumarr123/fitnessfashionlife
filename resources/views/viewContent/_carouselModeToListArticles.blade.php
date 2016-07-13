@@ -15,7 +15,7 @@
                             </div>
                 </div>
             @include('tagging._tagsViewMode')
-            @include('socialMedia._fbCommentSection')
+            @include('socialMedia._fbPlugIns')
             {{--@endif--}}
         </div>
         <?php $index = $index+1 ?>

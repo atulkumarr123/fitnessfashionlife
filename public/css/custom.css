@@ -1,3 +1,4 @@
+
 .push {
     height: 200px; /* '.push' must be the same height as 'footer' */
 }
@@ -567,24 +568,38 @@ body{
         margin-right: 0px !important; } }
 
 
-
-@media only screen and (min-width: 414px) and (max-width: 499px) {
+@media only screen and (min-width: 426px) and (max-width: 436px) {
     p img {
         display: block;
+        width: 410px !important;
+        height: 220px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important; } }
+
+@media only screen and (min-width: 411px) and (max-width: 425px) {
+    p img {
+        display: block;
+        /*padding-left: 10px;*/
         width: 380px !important;
         height: 220px !important;
         margin-left: 0px !important;
         margin-right: 0px !important; } }
 
-@media only screen and (min-width: 375px) and (max-width: 413px) {
+@media only screen and (min-width: 376px) and (max-width: 410px) {
     p img  {
         display: block;
         width: 341px !important;
         height: 220px !important;
         margin-left: 0px !important;
          margin-right: 0px !important; } }
-
-@media only screen and (min-width: 320px) and (max-width: 374px) {
+@media only screen and (min-width: 350px) and (max-width: 375px) {
+    p img {
+        display: block;
+        width: 360px !important;
+        height: 200px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;} }
+@media only screen and (min-width: 320px) and (max-width: 349px) {
     p img {
         display: block;
         width: 294px !important;
@@ -685,23 +700,38 @@ body{
         width: 460px ;
         height: 460px ; } }
 
-@media only screen and (min-width: 414px) and (max-width: 499px) {
+@media only screen and (min-width: 437px) and (max-width: 499px) {
     .media-object {
         display: block;
         width: 380px;
         height: 220px; } }
-
-@media only screen and (min-width: 375px) and (max-width: 413px) {
+@media only screen and (min-width: 426px) and (max-width: 436px) {
     .media-object  {
         display: block;
-        width: 341px ;
-        height: 220px; } }
+        width: 410px !important;
+        height: 220px !important;} }
 
-@media only screen and (min-width: 320px) and (max-width: 374px) {
+@media only screen and (min-width: 411px) and (max-width: 425px) {
+    .media-object  {
+        display: block;
+        width: 380px !important;
+        height: 220px !important; } }
+@media only screen and (min-width: 376px) and (max-width: 410px) {
     .media-object {
         display: block;
-        width: 294px ;
-        height: 200px ; } }
+        width: 341px !important;
+        height: 220px !important;
+        } }
+@media only screen and (min-width: 350px) and (max-width: 375px) {
+    .media-object {
+        display: block;
+        width: 360px !important;
+        height: 200px !important; } }
+@media only screen and (min-width: 320px) and (max-width: 349px) {
+    .media-object {
+        display: block;
+        width: 294px !important;
+        height: 200px !important; } }
 
 @media only screen and (min-width: 300px) and (max-width: 319px) {
     .media-object {
@@ -713,8 +743,6 @@ body{
         display: block;
         width: 248px;
         height: 200px; } }
-
-
 
 @media (min-width: 768px) {
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7,
@@ -1028,5 +1056,11 @@ a.recent-updates-block-anchor:focus {
         border-radius: 5px;
         margin-top: 55px;
         border: 1px solid white;
+    }
+}
+@media screen and (max-width: 500px) {
+    .fb_plugIns {
+        overflow: hidden;
+        width: 100%;
     }
 }
