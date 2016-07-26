@@ -7,6 +7,7 @@
 <meta name="content-language" content="en">
 <meta name="copyright" content="AtulyaPerspectives">
 <meta name="revisit-after" content="15 days">
+<meta name="author"     content="अतुल्य़Perspectives"/>
 {{--Facebook--}}
 <meta property="og:image"         content="@yield('image')"/>
 <meta property="og:url"           content="@yield('url')" />
@@ -20,5 +21,5 @@
 <meta property="twitter:url"           content="@yield('url')" />
 <meta property="twitter:title"         content="@yield('title')"/>
 <meta property="twitter:description"   content="@yield('description')"/>
-<meta property="twitter:card" content="AtulyaPerspectives"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:image"         content="@yield('image')"/>
